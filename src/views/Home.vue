@@ -11,17 +11,14 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script>
 import SideBar from '@/components/SideBar.vue'
 
-@Component({
+export default {
 	components: {
 		SideBar
 	}
-})
-
-export default class Home extends Vue {}
+	}
 </script>
 
 <style lang="stylus">

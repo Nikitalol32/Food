@@ -2,9 +2,20 @@
 	<div id="app">
 		<div id="nav">
 		</div>
+		<Home></Home>
 		<router-view/>
 	</div>
 </template>
+
+<script>
+import Home from '@/views/Home.vue'
+export default {
+	components: {
+		Home
+	}
+}
+</script>
+
 
 <style lang="stylus">
 *
