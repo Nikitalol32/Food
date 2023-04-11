@@ -1,13 +1,11 @@
 <template>
 	<div id="app">
-		<div id="nav">
-		</div>
 		<Home></Home>
 		<router-view/>
 	</div>
 </template>
 
-<script>
+<script lang="typescript">
 import Home from '@/views/Home.vue'
 export default {
 	components: {
