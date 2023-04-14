@@ -1,28 +1,12 @@
+## Работа с бэкендом
 
-## Customize configuration
+Серверный код расположен в `src/server`.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Для запуска сервера используем команду: `npm run server`.
 
-## Project Setup
+Доступное API:
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- `GET` `/api/restaurants` - Вернет рестораны;
+- `GET` `/api/menu/segments` - Вернет все сегменты меню;
+- `GET` `/api/menu/segments/:segment` - Вернет еду из переданного сегментам;
+- `GET` `/api/dish/:id` - Вернет еду по переданному `id`.
