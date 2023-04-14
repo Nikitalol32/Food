@@ -1,5 +1,6 @@
 import path from 'upath';
 import express from 'express';
+import cors from 'cors';
 
 import { restaurants, segments, dishById, dishesBySegment } from '@/server/api';
 
@@ -7,7 +8,7 @@ const
 	app = express(),
 	port = 5540;
 
-
+app.use(cors());
 app.use('/static', express.static(path.join(process.cwd(), 'src/server/db/images')));
 
 app.get('/api/restaurants', restaurants);
