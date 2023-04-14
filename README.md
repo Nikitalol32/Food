@@ -6,7 +6,7 @@
 
 Доступное API:
 
-- `GET` `/api/restaurants` - Вернет рестораны;
-- `GET` `/api/menu/segments` - Вернет все сегменты меню;
-- `GET` `/api/menu/segments/:segment` - Вернет еду из переданного сегментам;
-- `GET` `/api/dish/:id` - Вернет еду по переданному `id`.
+- `GET` `http://localhost:5540/api/restaurants` - Вернет рестораны;
+- `GET` `http://localhost:5540/api/menu/segments` - Вернет все сегменты меню;
+- `GET` `http://localhost:5540/api/menu/segments/:segment` - Вернет еду из переданного сегментам;
+- `GET` `http://localhost:5540/api/dish/:id` - Вернет еду по переданному `id`.
