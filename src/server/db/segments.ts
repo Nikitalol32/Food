@@ -1,7 +1,7 @@
 export const segmentIds = <const>{
 	breakfast: '25d3153c-0029-46dc-8df2-9e6d0c413a84',
 	raw: '20eb5da9-181a-4625-8892-15cbb0c23288',
-	snaks: '09472d2b-51f2-4afb-a433-9f5eddf2c949',
+	snaсks: '09472d2b-51f2-4afb-a433-9f5eddf2c949',
 	bruskets: '24cb17ba-29d6-4ffb-9125-ef7a6ce851a9',
 	forVine: 'd120b4f9-c762-4485-869e-4828838abd40',
 	salad: 'a5606fea-aa7a-480d-ada7-6f61cedfd203',
@@ -25,7 +25,7 @@ export const segments = () => [
 	},
 	{
 		title: 'Холодные закуски',
-		id: segmentIds.snaks
+		id: segmentIds.snaсks
 	},
 	{
 		title: 'Брускетты',

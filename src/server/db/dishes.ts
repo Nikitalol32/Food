@@ -35,10 +35,10 @@ const _dishes = {
 		d(960, 'Кобб – салат с креветками', segmentIds.raw, '10.jpg'),
 	],
 
-	[segmentIds.snaks]: [
-		d(640, 'Бутерброды канапе', segmentIds.snaks, '11.jpg'),
-		d(1200, 'Бутерброды на чипсах', segmentIds.snaks, '12.jpg'),
-		d(3600, 'Закуски всех мастей', segmentIds.snaks, '13.jpg'),
+	[segmentIds.snaсks]: [
+		d(640, 'Бутерброды канапе', segmentIds.snaсks, '11.jpg'),
+		d(1200, 'Бутерброды на чипсах', segmentIds.snaсks, '12.jpg'),
+		d(3600, 'Закуски всех мастей', segmentIds.snaсks, '13.jpg'),
 	],
 
 	[segmentIds.bruskets]: [
@@ -81,7 +81,6 @@ const _dishes = {
 		d(1300, 'Стейки форели', segmentIds.fish, '32.jpeg'),
 		d(1600, 'Какая-то рыба целиком', segmentIds.fish, '33.jpg'),
 		d(1600, 'Тунец', segmentIds.fish, '34.jpg')
-
 	]
 }
 
@@ -102,5 +101,5 @@ function createHash(str: string): string {
 }
 
 function d(price: number, name: string, segment: string, img: string) {
-	return {price, name, segment, img: `static/${img}`, id: createHash(name)};
+	return {price, name, segment, img: `http://localhost:5540/static/${img}`, id: createHash(name)};
 }
