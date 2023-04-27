@@ -3,46 +3,46 @@
 		<div class="home__main">
 
 				<div class="home__main-text-container">
+					<div class="home__nav-container">
+						<ul class="home__nav">
+							<li class="home__nav-item">Меню</li>
+							<li class="home__nav-item">Доставка</li>
+							<li class="home__nav-item">Оплата</li>
+							<li class="home__nav-item">Бронь столика</li>
+						</ul>
+					</div>
+
 					<h1 class="home__main-text">
 						Видовой ресторан Food Exxe Relo на Крестовском острове
 					</h1>
 				</div>
 
-				<div class="home__nav-container">
-					<ul class="home__nav">
-						<li class="home__nav-item">Меню</li>
-						<li class="home__nav-item">Доставка</li>
-						<li class="home__nav-item">Оплата</li>
-						<li class="home__nav-item">Бронь столика</li>
-					</ul>
-				</div>
-
 		</div>
 
 		<div class="home__content">
-			<div class="home__content-about">
+			<section class="home__about">
 				<div class="chapter-container">
 					<div class="chapter-name">О ресторане</div>
 					<div class="stripe"></div>
 				</div>
-				<div class="home__content-about-description">
-					<div class="home__content-about-description-heading heading">Food<br>Exxe<br>Relo</div>
-					<p class="home__content-about-description-text content-text">
+				<div class="home__about-description">
+					<div class="home__about-heading">Food<br>Exxe<br>Relo</div>
+					<p class="home__about-text">
 						Sed vel ornare ut rhoncus, ac ut nibh. Amet at sit et nibh. In lectus phasellus non ornare eget velit. Facilisi urna, tristique dui, rhoncus, dolor. Tincidunt enim gravida dignissim leo pulvinar sit volutpat nulla vestibulum.<br><br>
 						Morbi pellentesque enim massa laoreet vel id. Lectus ac, facilisis neque turpis. Morbi massa enim nullam sem vehicula. Amet quis pellentesque enim porttitor lectus interdum. Nisi, faucibus pharetra at porttitor. Fringilla luctus pretium in viverra. In adipiscing tempor amet malesuada ullamcorper ut sagittis. Dui, scelerisque vulputate risus massa dictum. Cras at quis in eu, faucibus feugiat vel. At.
 					</p>
 				</div>
-			</div>
+			</section>
 
-			<div class="home__content-menu">
+			<section class="home__menu">
 				<div class="chapter-container">
 					<div class="chapter-name">Меню</div>
 					<div class="stripe"></div>
 				</div>
-				<div class="home__content-menu-description">
-					<div class="home__content-menu-description-container">
-						<div class="home__content-menu-description-heading heading">Меню</div>
-						<p class="home__content-item-description-text content-text">
+				<div class="home__menu-description">
+					<div class="home__menu-container">
+						<div class="home__menu-heading">Меню</div>
+						<p class="home__menu-text">
 							Sed vel ornare ut rhoncus, ac ut nibh. Amet at sit et nibh. In lectus phasellus non ornare eget velit. Facilisi urna, tristique dui, rhoncus, dolor. Tincidunt enim gravida dignissim leo pulvinar sit volutpat nulla vestibulum.<br><br>
 							Morbi pellentesque enim massa laoreet vel id. Lectus ac, facilisis neque turpis.
 						</p>
@@ -68,33 +68,33 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 
-			<div class="home__content-delivery">
+			<section class="home__delivery">
 				<div class="chapter-container">
 					<div class="chapter-name">Доставка</div>
 					<div class="stripe"></div>
 				</div>
-				<div class="home__content-delivery-description">
-					<div class="heading">Служба Доставки</div>
-					<div class="home__content-delivery-description-container">
-						<div class="content-text">Phasellus diam, ultrices lobortis integer et. Diam, purus vel sagittis, non, a. In risus, venenatis enim vitae mauris aliquet orci. Consectetur nibh interdum nullam ut lobortis eu etiam sem. Et in vitae pellentesque non, lectus orci natoque faucibus suspendisse. Semper aliquam id et ultrices velit donec lacus. In odio sit nibh volutpat cras placerat sit feugiat dignissim. Rutrum et suspendisse tortor, lobortis eleifend in fringilla. Egestas cursus imperdiet cursus dui, nulla id massa. Hendrerit nam enim semper porttitor imperdiet diam semper. Nulla sit etiam cras morbi enim elementum euismod sapien.
+				<div class="home__delivery-description">
+					<div class="home__delivery-heading">Служба Доставки</div>
+					<div class="home__delivery-container">
+						<div class="home__delivery-text">Phasellus diam, ultrices lobortis integer et. Diam, purus vel sagittis, non, a. In risus, venenatis enim vitae mauris aliquet orci. Consectetur nibh interdum nullam ut lobortis eu etiam sem. Et in vitae pellentesque non, lectus orci natoque faucibus suspendisse. Semper aliquam id et ultrices velit donec lacus. In odio sit nibh volutpat cras placerat sit feugiat dignissim. Rutrum et suspendisse tortor, lobortis eleifend in fringilla. Egestas cursus imperdiet cursus dui, nulla id massa. Hendrerit nam enim semper porttitor imperdiet diam semper. Nulla sit etiam cras morbi enim elementum euismod sapien.
 						</div>
-						<div class="home__content-delivery-description-buttons">
-							<div class="home__content-delivery-description-buttons-button">Подробнее</div>
-							<div class="home__content-delivery-description-buttons-button">Условия Доставки</div>
+						<div class="home__delivery-buttons">
+							<button class="home__delivery-button">Подробнее</button>
+							<button class="home__delivery-button">Условия Доставки</button>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 
-			<div class="home__content-contact">
+			<section class="home__contact">
 				<div class="chapter-container">
 					<div class="chapter-name">Контакты</div>
 					<div class="stripe"></div>
 				</div>
-				<div class="home__content-contact-container">
-					<div class="home__content-contact-devilery-ifno">
+				<div class="home__contact-container">
+					<div class="home__contact-devilery-ifno">
 						<div class="delivery-time">
 							<div class="delivery-time__item">
 								<div class="delivery-time__item-time">
@@ -130,7 +130,7 @@
 						здесь будет карта с инфой
 					</div>
 				</div>
-			</div>
+			</section>
 		</div>
 	</div>
 </template>
@@ -142,6 +142,22 @@ export default {
 </script>
 
 <style lang="stylus">
+content-text()
+	font-family Circe
+	font-weight 400
+	font-size 18px
+	max-width 526px
+	width 100%
+	text-align left
+
+
+heading()
+	width 196px
+	color #333
+	font-family Circe
+	font-weight 700
+	font-size 64px
+	margin-right 134px
 
 .home
 	width 100%
@@ -152,31 +168,32 @@ export default {
 		width 100%
 		height 100vh
 		display flex
-		flex-direction row
+		flex-direction column
 		justify-content space-between
 		box-sizing border-box
 		background-image url('@/assets/img/home-bg.jpg')
 		background-repeat no-repeat
 		background-size cover
 		margin-bottom 150px
-		padding-left 22%
 
 		&-text-container
-			flex 1
 			display flex
 			flex-direction column
-			justify-content flex-end
-			max-width 856px
+			justify-content space-between
 			width 100%
+			height 100%
 
 		&-text
-			font-family Circe-Bold
+			font-family Circe
+			font-weight 700
+			max-width 856px
+			width 100%
 			color white
 			font-size 54px
-			margin-bottom 180px
+			margin-bottom 100px
+			margin-left 22%
 
 	&__nav-container
-		flex .3
 		height max-content
 		display flex
 		flex-direction row
@@ -193,6 +210,7 @@ export default {
 
 		&-item
 			font-family Circe
+			font-weight 400
 			font-size 16px
 			color #fff
 			padding 10px 0px
@@ -210,109 +228,117 @@ export default {
 				padding 10px 20px
 
 	&__content
-		max-width 1376px
-		width 100%
 		margin-left 16%
 		display flex
 		flex-direction column
+		padding-right 30px
 
-		&-about
+	&__about
+		display flex
+		flex-direction column
+		margin-bottom 150px
+
+		&-description
+			display flex
+			flex-direction row
+			margin-left 12%
+
+		&-heading
+			heading()
+
+		&-text
+			content-text()
+
+	&__menu
+		display flex
+		flex-direction column
+		margin-bottom 150px
+
+		&-heading
+			heading()
+
+		&-text
+			content-text()
+
+		&-description
+			
 			display flex
 			flex-direction column
-			margin-bottom 150px
 
-			&-description
-				width 100%
-				display flex
-				flex-direction row
-				margin-left 220px
+		&-container
+			display flex
+			flex-direction row
+			margin-bottom 80px
+			margin-left 12%
 
-				&-container
-					width 100%
-					display flex
-					flex-direction row
-					margin-bottom 80px
+	&__delivery
+		display flex
+		flex-direction column
+		margin-bottom 150px
 
-					&_delivery
-						margin-bottom 60px
+		&-heading
+			heading()
 
-		&-menu
+		&-text
+			content-text()
+			margin-bottom 60px
+
+		&-description
+			display flex
+			flex-direction row
+			margin-left 12%
+
+		&-container
 			display flex
 			flex-direction column
-			margin-bottom 150px
 
-			&-description
-				
-				display flex
-				flex-direction column
-
-				&-container
-					display flex
-					flex-direction row
-					margin-bottom 80px
-					margin-left 220px
-
-		&-delivery
+			&>.content-text
+				margin-bottom 60px
+			
+		&-buttons
 			display flex
-			flex-direction column
-			margin-bottom 150px
+			flex-direction row
 
-			&-description
-				display flex
-				flex-direction row
-				margin-left 220px
+		&-button
+			font-family Circe
+			font-weight 400
+			border 1px solid rgba(51, 51, 51, 0.2)
+			padding 15px 30px
+			color black
+			font-size 20px
+			cursor pointer
+			background-color white
 
-				&-container
-					display flex
-					flex-direction column
+			&:first-child
+				margin-right 30px
 
-					&>.content-text
-						margin-bottom 60px
-				
-				&-buttons
-					display flex
-					flex-direction row
+			&:hover
+				background-color var(--brown-of-light)
+				color #eee
 
-					&-button
-						font-family Circe-Regular
-						border 1px solid rgba(51, 51, 51, 0.2)
-						padding 15px 30px
-						color #333
-						font-size 20px
-						weight 700
-						cursor pointer
+	&__contact
+		display flex
+		flex-direction column
+		margin-bottom 150px
 
-						&:first-child
-							margin-right 30px
-
-						&:hover
-							background-color var(--brown-of-light)
-							color #eee
-
-		&-contact
+		&-container
 			display flex
-			flex-direction column
-			margin-bottom 150px
+			flex-direction row
+			justify-content space-between
 
-			&-container
-				display flex
-				flex-direction row
-				justify-content space-between
-
-			&-devilery-ifno
-				display flex
-				flex-direction row
+		&-devilery-ifno
+			display flex
+			flex-direction row
 
 .delivery-time
 	width 418px
 	display flex
 	flex-direction row
 	flex-wrap wrap
-	justify-content space-between
 	align-items center
 
 	&__item
-		max-width 196px
+		max-width 165px
 		width 100%
 		display flex
 		flex-direction column
@@ -324,29 +350,26 @@ export default {
 
 		&-time
 			color var(--brown-of-light)
-			font-family Circe-Bold
+			font-family Circe
+			font-weight 400
 
 			&>span:first-child
 				font-size 64px
-				font-family Circe-Bold
 				margin-right 15px
 
 			&>span:nth-child(2)
 				font-size 32px
-				font-family Circe-Bold
 
 		&-from
 			font-size 18px
-			font-family Circe-Regular
+			font-family Circe
+			font-weight 400
 
 .menu-carts
-	width 100%
 	display flex
-	flex-direction row
-	margin-left 220px
+	margin-left 12%
 
 	&__item
-		width max-content
 		display flex
 		flex-direction column
 		align-items center
@@ -376,21 +399,8 @@ export default {
 	height 450px
 	border 1px solid rgba(51, 51, 51, 0.2)
 	font-size 32px
-	font-family Circe-Regular
+	font-family Circe
+	font-weight 400
 	text-align center
-
-.heading
-	width 196px
-	color #333
-	font-family Circe-Bold
-	font-size 64px
-	margin-right 134px
-
-.content-text
-	font-family Circe-Regular
-	font-size 18px
-	max-width 526px
-	width 100%
-	text-align left
 
 </style>

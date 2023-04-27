@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<SideBar class="sidebar"></SideBar>
+		<SideBar></SideBar>
 		<Home></Home>
 		<router-view/>
 	</div>
@@ -20,25 +20,28 @@ export default {
 
 
 <style lang="stylus">
-
 @font-face {
-	font-family "Circe-Bold"
-	src url('@/assets/fonts/Circe/Circe-Bold.woff2') format(woff2)
-}
-
-@font-face {
-	font-family "Circe-ExtraBold"
-	src url('@/assets/fonts/Circe/Circe-ExtraBold.woff2') format(woff2)
+	font-family "Circe"
+	src url('@/assets/fonts/Circe/Circe-Light.woff2') format(woff2)
+	font-weight 100
 }
 
 @font-face {
 	font-family "Circe"
-	src url('@/assets/fonts/Circe/Circe-Light.woff2') format(woff2)
+	src url('@/assets/fonts/Circe/Circe-Regular.woff2') format(woff2)
+	font-weight 400
 }
 
 @font-face {
-	font-family "Circe-Regular"
-	src url('@/assets/fonts/Circe/Circe-Regular.woff2') format(woff2)
+	font-family "Circe"
+	src url('@/assets/fonts/Circe/Circe-Bold.woff2') format(woff2)
+	font-weight 700
+}
+
+@font-face {
+	font-family "Circe"
+	src url('@/assets/fonts/Circe/Circe-ExtraBold.woff2') format(woff2)
+	font-weight 900
 }
 
 *
@@ -75,6 +78,5 @@ html
 	height 3px
 	background-color var(--brown-of-light)
 	border-radius 1px
-
 
 </style>
