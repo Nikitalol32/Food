@@ -45,9 +45,8 @@ export default {
 	},
 
 	methods: {
-		segmentClick(id='string') {
+		segmentClick(id: string) {
 			this.segmentId = id;
-			console.log(this.segmentId)
 			fetch(`http://localhost:5540/api/menu/segments/${this.segmentId}`)
 				.then((r) => {
 					return r.json()
@@ -57,7 +56,7 @@ export default {
 			this.$router.push({
 				query: {'segment': id},
 				name: 'segment'
-			})
+			});
 		}
 	},
 
