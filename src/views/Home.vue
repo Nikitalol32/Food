@@ -4,12 +4,17 @@
 
 				<div class="home__main-text-container">
 					<div class="home__nav-container">
-						<ul class="home__nav">
-							<li class="home__nav-item">Меню</li>
-							<li class="home__nav-item">Доставка</li>
-							<li class="home__nav-item">Оплата</li>
-							<li class="home__nav-item">Бронь столика</li>
-						</ul>
+						<div class="home__nav">
+							<router-link
+								class="home__nav-item"
+								to="/menu"
+							>
+								Меню
+							</router-link>
+							<div class="home__nav-item">Доставка</div>
+							<div class="home__nav-item">Оплата</div>
+							<div class="home__nav-item">Бронь столика</div>
+						</div>
 					</div>
 
 					<h1 class="home__main-text">
@@ -136,8 +141,8 @@
 </template>
 
 <script lang="typescript">
-
 export default {
+
 }
 </script>
 
@@ -149,7 +154,8 @@ content-text()
 	max-width 526px
 	width 100%
 	text-align left
-
+	caret-color transparent
+	cursor context-menu
 
 heading()
 	width 196px
@@ -158,6 +164,8 @@ heading()
 	font-weight 700
 	font-size 64px
 	margin-right 134px
+	caret-color transparent
+	cursor context-menu
 
 .home
 	width 100%
@@ -192,6 +200,8 @@ heading()
 			font-size 54px
 			margin-bottom 100px
 			margin-left 22%
+			caret-color transparent
+			cursor context-menu
 
 	&__nav-container
 		height max-content
@@ -205,7 +215,6 @@ heading()
 		display flex
 		flex-direction row
 		align-items center
-		list-style none
 		box-sizing border-box
 
 		&-item
@@ -215,10 +224,10 @@ heading()
 			color #fff
 			padding 10px 0px
 			margin-right 50px
-			transform transition
 			cursor pointer
 			letter-spacing 1px
 			transition .7s ease
+			text-decoration none
 
 			&:last-child
 				margin-right 0

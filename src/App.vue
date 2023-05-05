@@ -1,19 +1,20 @@
 <template>
 	<div id="app">
 		<SideBar></SideBar>
-		<Home></Home>
 		<router-view/>
+		<FooterComponent></FooterComponent>
 	</div>
 </template>
 
 <script lang="typescript">
-import Home from '@/views/Home.vue'
 import SideBar from '@/components/SideBar.vue'
+import FooterComponent from '@/components/Footer.vue'
+
 
 export default {
 	components: {
-		Home,
 		SideBar,
+		FooterComponent,
 	}
 }
 </script>
@@ -49,7 +50,6 @@ export default {
 	padding 0
 	--bg-bar #262525
 	--brown-of-light #B59571
-	font-family Circe
 
 body,
 html
@@ -70,6 +70,7 @@ html
 	text-transform uppercase
 	letter-spacing 1px
 	font-size 20px
+	font-family Circe
 	font-weight 700
 	margin-right 30px
 

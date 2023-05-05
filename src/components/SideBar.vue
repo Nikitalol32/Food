@@ -1,7 +1,11 @@
 <template>
 	<div class="sidebar">
 		<div class="sidebar__container">
-			<img class="sidebar__logo" src="@/assets/img/logo.svg">
+			<router-link
+				class="sidebar__logo-container"
+				to="/">
+				<img src="@/assets/img/logo.svg" alt="food" class="sidebar__logo">
+			</router-link>
 			<div class="sidebar__menu-icon">
 				<div class="sidebar__menu-icon-stick"></div>
 				<div class="sidebar__menu-icon-stick"></div>
@@ -70,8 +74,10 @@ export default {
 		flex-direction column
 		align-items center
 
-	&__logo
+	&__logo-container
 		margin-bottom 28px
+
+	&__logo
 		cursor pointer
 
 	&__links
