@@ -1,20 +1,20 @@
 <template>
 	<div class="menu-cart">
-		<img :srcset="image" alt="bludo" class="menu-cart__img">
+		<img :src="image" alt="bludo" class="menu-cart__img">
 		<div class="menu-cart__info">
 			<div class="menu-cart__name">{{name}}</div>
 			<div class="menu-cart__container">
-				<div class="menu-cart__price">{{price}}</div>
-				<div class="menu-cart__button"></div>
+				<div class="menu-cart__price">{{price}} Р</div>
+				<div class="menu-cart__button">В корзину</div>
 			</div>
 		</div>
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-	params: {
-		price: String,
+	props: {
+		price: Number,
 		image: String,
 		name: String,
 	}
@@ -26,16 +26,31 @@ export default {
 	display flex
 	flex-direction column
 	align-items center
-	max-width 306px
+	max-width 304px
 	width 100%
+	box-sizing border-box
+	border var(--border)
+
+	&__img
+		width 100%
+		height 220px
 
 	&__info
 		padding 30px
+		width 100%
+		box-sizing border-box
+		display flex
+		flex-direction column
+		justify-content space-between
 
 	&__name
 		font-size 20px
 		font-family Circe
 		font-weight 700
+		margin-bottom 27px
+		width 100%
+		height 59px
+		text-align center
 
 	&__container
 		display flex
@@ -54,5 +69,6 @@ export default {
 		font-weight 700
 		background-color var(--brown-of-light)
 		color white
+		cursor pointer
 
 </style>

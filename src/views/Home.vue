@@ -92,57 +92,17 @@
 					</div>
 				</div>
 			</section>
-
-			<section class="home__contact">
-				<div class="chapter-container">
-					<div class="chapter-name">Контакты</div>
-					<div class="stripe"></div>
-				</div>
-				<div class="home__contact-container">
-					<div class="home__contact-devilery-ifno">
-						<div class="delivery-time">
-							<div class="delivery-time__item">
-								<div class="delivery-time__item-time">
-									<span>2</span>
-									<span>мин</span>
-								</div>
-								<div class="delivery-time__item-from">из центра<br>Санкт-Петербурга</div>
-							</div>
-							<div class="delivery-time__item">
-								<div class="delivery-time__item-time">
-									<span>12</span>
-									<span>мин</span>
-								</div>
-								<div class="delivery-time__item-from">из города<br>Зеленогорск</div>
-							</div>
-							<div class="delivery-time__item">
-								<div class="delivery-time__item-time">
-									<span>42</span>
-									<span>мин</span>
-								</div>
-								<div class="delivery-time__item-from">из аэропорта<br>Пулково</div>
-							</div>
-							<div class="delivery-time__item">
-								<div class="delivery-time__item-time">
-									<span>52</span>
-									<span>мин</span>
-								</div>
-								<div class="delivery-time__item-from">из города<br>Павловск </div>
-							</div>
-						</div>
-					</div>
-					<div class="map">
-						здесь будет карта с инфой
-					</div>
-				</div>
-			</section>
+			<ContactChapter/>
 		</div>
 	</div>
 </template>
 
-<script lang="typescript">
+<script lang="ts">
+import ContactChapter from "@/components/ContactChapter.vue"
 export default {
-
+	components: {
+		ContactChapter,
+	}
 }
 </script>
 
@@ -200,8 +160,6 @@ heading()
 			font-size 54px
 			margin-bottom 100px
 			margin-left 22%
-			caret-color transparent
-			cursor context-menu
 
 	&__nav-container
 		height max-content
@@ -324,55 +282,6 @@ heading()
 			&:hover
 				background-color var(--brown-of-light)
 				color #eee
-
-	&__contact
-		display flex
-		flex-direction column
-		margin-bottom 150px
-
-		&-container
-			display flex
-			flex-direction row
-			justify-content space-between
-
-		&-devilery-ifno
-			display flex
-			flex-direction row
-
-.delivery-time
-	width 418px
-	display flex
-	flex-direction row
-	flex-wrap wrap
-	align-items center
-
-	&__item
-		max-width 165px
-		width 100%
-		display flex
-		flex-direction column
-		margin-right 24px
-		margin-bottom 50px
-
-		&:nth-child(2n)
-			margin-right 0
-
-		&-time
-			color var(--brown-of-light)
-			font-family Circe
-			font-weight 400
-
-			&>span:first-child
-				font-size 64px
-				margin-right 15px
-
-			&>span:nth-child(2)
-				font-size 32px
-
-		&-from
-			font-size 18px
-			font-family Circe
-			font-weight 400
 
 .menu-carts
 	display flex

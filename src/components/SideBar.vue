@@ -27,7 +27,7 @@
 	</div>
 </template>
 
-<script lang="typescript">
+<script lang="ts">
 export default {
 
 }
@@ -42,7 +42,7 @@ export default {
 	flex-direction column
 	justify-content space-between
 	align-items center
-	background-color var(--bg-bar)
+	background-color var(--dark)
 	box-sizing border-box
 
 	&__menu-icon

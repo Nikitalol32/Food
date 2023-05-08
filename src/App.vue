@@ -6,7 +6,7 @@
 	</div>
 </template>
 
-<script lang="typescript">
+<script lang="ts">
 import SideBar from '@/components/SideBar.vue'
 import FooterComponent from '@/components/Footer.vue'
 
@@ -48,17 +48,29 @@ export default {
 *
 	margin 0
 	padding 0
-	--bg-bar #262525
+	--border 1px solid rgba(51, 51, 51, 0.2);
+	--dark #262525
 	--brown-of-light #B59571
+	caret-color transparent
+	cursor context-menu
 
 body,
 html
 	width 100%
 	height 100%
 
+html
+	&::-webkit-scrollbar
+		width 7px
+
+	&::-webkit-scrollbar-thumb
+		background var(--dark)
+		border-radius 7px
+
 #app
 	height 100%
 	width 100%
+
 
 .chapter-container
 	display flex
