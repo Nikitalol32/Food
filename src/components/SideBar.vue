@@ -3,8 +3,9 @@
 		<div class="sidebar__container">
 			<router-link
 				class="sidebar__logo-container"
-				to="/">
-				<img src="@/assets/img/logo.svg" alt="food" class="sidebar__logo">
+				to="/"
+			>
+				<img src="@/assets/img/logo.svg" alt="" class="sidebar__logo">
 			</router-link>
 			<div class="sidebar__menu-icon">
 				<div class="sidebar__menu-icon-stick"></div>
@@ -43,7 +44,6 @@ export default {
 	justify-content space-between
 	align-items center
 	background-color var(--dark)
-	box-sizing border-box
 
 	&__menu-icon
 		display flex

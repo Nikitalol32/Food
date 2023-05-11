@@ -1,4 +1,3 @@
-
 export interface Segment {
 	title: string;
 	id: string;
@@ -6,9 +5,21 @@ export interface Segment {
 
 export type Segments = Segment[];
 
-export function getSegments(id: string): Promise<Segments> {
+/**
+ * Возвращает блюда из сегмента по переданному id
+ * @param id
+ */
+
+export function getSegment(id: string): Promise<Segments> {
 	return fetch(`http://localhost:5540/api/menu/segments/${id}`)
-	.then((r) => {
-		return r.json()
-	})
+		.then((r) => {
+			return r.json()
+		})
+}
+
+export function getSegments() :Promise<Segment[]> {
+	return fetch('http://localhost:5540/api/menu/segments')
+		.then((r) => {
+			return r.json()
+		})
 }

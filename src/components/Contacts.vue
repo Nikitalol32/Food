@@ -5,7 +5,7 @@
 			<div class="stripe"></div>
 		</div>
 		<div class="contact-container">
-			<div class="contact-devilery-ifno">
+			<div class="contact-delivery-info">
 				<div class="delivery-time">
 					<div class="delivery-time__item">
 						<div class="delivery-time__item-time">
@@ -62,7 +62,7 @@ export default {
 		flex-direction row
 		justify-content space-between
 
-	&-devilery-ifno
+	&-delivery-info
 		display flex
 		flex-direction row
 
@@ -86,7 +86,6 @@ export default {
 
 		&-time
 			color var(--brown-of-light)
-			font-family Circe
 			font-weight 400
 
 			&>span:first-child
@@ -98,7 +97,6 @@ export default {
 
 		&-from
 			font-size 18px
-			font-family Circe
 			font-weight 400
 
 </style>

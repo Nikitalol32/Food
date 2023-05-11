@@ -21,6 +21,8 @@ export default {
 
 
 <style lang="stylus">
+
+
 @font-face {
 	font-family "Circe"
 	src url('@/assets/fonts/Circe/Circe-Light.woff2') format(woff2)
@@ -51,21 +53,14 @@ export default {
 	--border 1px solid rgba(51, 51, 51, 0.2);
 	--dark #262525
 	--brown-of-light #B59571
-	caret-color transparent
-	cursor context-menu
+	font-family Circe
+	box-sizing border-box
+	--breakpoint-one 1620px
 
 body,
 html
 	width 100%
 	height 100%
-
-html
-	&::-webkit-scrollbar
-		width 7px
-
-	&::-webkit-scrollbar-thumb
-		background var(--dark)
-		border-radius 7px
 
 #app
 	height 100%
@@ -82,7 +77,6 @@ html
 	text-transform uppercase
 	letter-spacing 1px
 	font-size 20px
-	font-family Circe
 	font-weight 700
 	margin-right 30px
 

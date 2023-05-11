@@ -3,89 +3,109 @@
 		<div class="menu__header">
 			<img src="@/assets/img/basket.svg" class="menu__basket-icon">
 		</div>
-		<ul class="menu__nav">
-			<div class="menu__nav-container">
+		<nav class="menu__nav">
+			<ul class="menu__nav-container">
 				<li
 					class="menu__nav-item"
 					v-for="item in segments"
-					:key="item"
+					:key="item.id"
 					@click="segmentClick(item.id)"
 				>
 				{{item.title}}
 				</li>
-			</div>
-		</ul>
+			</ul>
+		</nav>
 		<div class="menu__carts">
 			<MenuCart
 				class="menu__cart"
-				v-for="cart in carts"
-				:key="cart"
-				:name="cart.name"
-				:price="cart.price"
-				:image="cart.img"
+				v-for="dish in dishes"
+				:key="dish.id"
+				:name="dish.name"
+				:price="dish.price"
+				:image="dish.img"
 			/>
 		</div>
-		<ContactChapter/>
+		<Contacts/>
 	</div>
 </template>
 
 <script lang="ts">
-import MenuCart from '@/components/MenuCart.vue'
-import {getSegments, type Segment} from '@/core/api/segments'
-import ContactChapter from '@/components/ContactChapter.vue'
+import MenuCart from '@/components/DishCart.vue'
+import {getSegment, type Segment, getSegments} from '@/core/api/segments'
+import Contacts from '@/components/Contacts.vue'
+// import type { LocationQueryValue, LocationQuery } from 'vue-router'
 
 export default {
 	data() {
 		return {
 			segments: [] as Segment[],
-			segmentId: '',
-			carts: [] as Segment[],
+			segmentId: '' as string,
+			dishes: [] as Segment[],
 		}
 	},
 
 	components: {
 		MenuCart,
-		ContactChapter
+		Contacts
 	},
 
 	methods: {
 		async segmentClick(id: string) {
-			this.segmentId = id;
-			this.carts = await getSegments(id);
 			this.$router.push({
 				path: '/menu',
-				query: {'segment': id}
+				query: {segment: id}
 			});
 		}
 	},
 
+	created() {
+		this.$watch(
+			() => this.$route.query,
+			async (query) => {
+				if (query.segment != null && typeof query.segment === "string") {
+					this.dishes = await getSegment(query.segment);
+					this.segmentId = query.segment;
+					console.log(1)
+				}
+
+				console.log(query)
+			}
+		)
+		if (typeof this.$route.query['segment'] === 'string') {
+			this.segmentId = this.$route.query['segment']
+
+		}
+	},
+
 	mounted() {
-		fetch('http://localhost:5540/api/menu/segments')
-			.then((r) => {
-				console.log(r)
-				return r.json()
-			})
+		getSegments()
 			.then((r) => {
 				this.segments = r;
-				const id = this.segments[0].id;
-				this.segmentId = id;
-				return getSegments(id);
+
+				if (this.segmentId != null && this.segmentId !== '') {
+					return getSegment(this.segmentId);
+
+				}
+
+				return getSegment(this.segments[0].id);
 			})
 			.then((r) => {
-				this.carts = r;
+				this.dishes = r;
 			})
+
 	}
 }
 </script>
 
 <style lang="stylus">
+@require "../assets/style/breakpoints.styl"
+
 .menu
 	display flex
 	flex-direction column
 	max-width 1341px
 	margin 0 auto 80px 16.3%
 	padding 0 25px
-	box-sizing border-box
 
 	&__basket-icon
 		cursor pointer
@@ -99,7 +119,6 @@ export default {
 	&__nav
 		display flex
 		margin-bottom 61px
-		box-sizing border-box
 		max-width 1296px
 		width 100%
 		overflow-x hidden
@@ -108,10 +127,8 @@ export default {
 		&-container
 			padding-bottom 15px
 			display flex
-			flex-direction row
 			width 100%
 			list-style none
-			box-sizing border-box
 			overflow scroll
 			justify-content center
 
@@ -127,10 +144,8 @@ export default {
 			margin-right 40px
 			font-size 16px
 			font-weight 400
-			font-family Circe
 			padding-bottom 5px
 			white-space nowrap
-			caret-color transparent
 			cursor pointer
 
 			&:last-child
@@ -153,23 +168,21 @@ export default {
 		margin-bottom 25px
 		margin-right 25px
 
-@media (min-width 1603px) {
+@media (min-width $bp-one) {
 	.menu__cart:nth-child(4n) {
 		margin-right 0px
 	}
 }
 
-@media (min-width 1210px) and (max-width 1601px) {
-	.menu__cart:nth-child(3n) {
-		margin-right 0
+@media (max-width $bp-one) {
+	.menu {
+		max-width 1047px
 	}
-}
 
-@media (max-width 1601px) {
-.menu__nav,
-.menu__nav-container {
-	justify-content flex-start
-}
+	.menu__nav,
+	.menu__nav-container {
+		justify-content flex-start
+	}
 }
 
 </style>

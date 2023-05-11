@@ -1,7 +1,6 @@
 <template>
 	<div class="footer">
-			<router-link
-				to="/">
+			<router-link to="/">
 				<img src="@/assets/img/logo.svg" alt="food" class="sidebar__logo">
 			</router-link>
 			<a href="#" class="footer__politics">
@@ -25,7 +24,6 @@ export default {
 <style lang="stylus">
 .footer
 	display flex
-	flex-direction row
 	justify-content space-evenly
 	align-items center
 	background-color var(--dark)
@@ -33,21 +31,17 @@ export default {
 	height 120px
 
 	&__politics
-		text-decoration none
-		font-family Circe
 		font-weight 400
 		color white
 		font-size 16px
 		cursor pointer
 		
 	&__developers
-		font-family Circe
 		font-weight 700
 		font-size 16px
 		color white
 
-		&>a
-			text-decoration none
+		& > a
 			color white
 			cursor pointer
 

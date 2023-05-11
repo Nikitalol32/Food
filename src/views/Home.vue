@@ -3,7 +3,7 @@
 		<div class="home__main">
 
 				<div class="home__main-text-container">
-					<div class="home__nav-container">
+					<nav class="home__nav-container">
 						<div class="home__nav">
 							<router-link
 								class="home__nav-item"
@@ -15,7 +15,7 @@
 							<div class="home__nav-item">Оплата</div>
 							<div class="home__nav-item">Бронь столика</div>
 						</div>
-					</div>
+					</nav>
 
 					<h1 class="home__main-text">
 						Видовой ресторан Food Exxe Relo на Крестовском острове
@@ -98,7 +98,7 @@
 </template>
 
 <script lang="ts">
-import ContactChapter from "@/components/ContactChapter.vue"
+import ContactChapter from "@/components/Contacts.vue"
 export default {
 	components: {
 		ContactChapter,
@@ -108,23 +108,19 @@ export default {
 
 <style lang="stylus">
 content-text()
-	font-family Circe
 	font-weight 400
 	font-size 18px
 	max-width 526px
 	width 100%
 	text-align left
-	caret-color transparent
 	cursor context-menu
 
 heading()
 	width 196px
 	color #333
-	font-family Circe
 	font-weight 700
 	font-size 64px
 	margin-right 134px
-	caret-color transparent
 	cursor context-menu
 
 .home
