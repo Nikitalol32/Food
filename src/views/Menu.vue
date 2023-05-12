@@ -50,7 +50,7 @@ export default {
 	},
 
 	methods: {
-		async segmentClick(id: string) {
+		segmentClick(id: string) {
 			this.$router.push({
 				path: '/menu',
 				query: {segment: id}
@@ -58,31 +58,38 @@ export default {
 		}
 	},
 
-	created() {
-		this.$watch(
-			() => this.$route.query,
-			async (query) => {
-				if (query.segment != null && typeof query.segment === "string") {
-					this.dishes = await getSegment(query.segment);
-					this.segmentId = query.segment;
-					console.log(1)
-				}
+	computed: {
+		routeSegment() {
+			return this.$route.query['segment']
+		}
+	},
 
-				console.log(query)
+	watch: {
+		async $route() {
+			const routeSegment = this.routeSegment;
+
+			if (typeof routeSegment === "string") {
+				this.dishes = await getSegment(routeSegment);
+				this.segmentId = routeSegment;
+
 			}
-		)
-		if (typeof this.$route.query['segment'] === 'string') {
-			this.segmentId = this.$route.query['segment']
 
 		}
 	},
 
-	mounted() {
+	created() {
+		const routeSegment = this.routeSegment;
+
+		if (typeof routeSegment === 'string') {
+			this.segmentId = routeSegment
+
+		}
+
 		getSegments()
 			.then((r) => {
 				this.segments = r;
 
-				if (this.segmentId != null && this.segmentId !== '') {
+				if (this.segmentId !== '') {
 					return getSegment(this.segmentId);
 
 				}
@@ -93,7 +100,8 @@ export default {
 				this.dishes = r;
 			})
 
-	}
+	},
+
 }
 </script>
 
