@@ -1,25 +1,28 @@
 <template>
 	<div id="app">
 		<SideBar></SideBar>
-		<Home></Home>
 		<router-view/>
+		<FooterComponent></FooterComponent>
 	</div>
 </template>
 
-<script lang="typescript">
-import Home from '@/views/Home.vue'
+<script lang="ts">
 import SideBar from '@/components/SideBar.vue'
+import FooterComponent from '@/components/Footer.vue'
+
 
 export default {
 	components: {
-		Home,
 		SideBar,
+		FooterComponent,
 	}
 }
 </script>
 
 
 <style lang="stylus">
+
+
 @font-face {
 	font-family "Circe"
 	src url('@/assets/fonts/Circe/Circe-Light.woff2') format(woff2)
@@ -47,9 +50,12 @@ export default {
 *
 	margin 0
 	padding 0
-	--bg-bar #262525
+	--border 1px solid rgba(51, 51, 51, 0.2);
+	--dark #262525
 	--brown-of-light #B59571
 	font-family Circe
+	box-sizing border-box
+	--breakpoint-one 1620px
 
 body,
 html
@@ -59,6 +65,7 @@ html
 #app
 	height 100%
 	width 100%
+
 
 .chapter-container
 	display flex
