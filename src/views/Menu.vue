@@ -31,7 +31,8 @@
 
 <script lang="ts">
 import MenuCart from '@/components/DishCart.vue'
-import {getSegment, type Segment, getSegments} from '@/core/api/segments'
+import {type Segment, getSegments} from '@/core/api/segments'
+import {getSegment} from '@/core/api/getDishesBySegment'
 import Contacts from '@/components/Contacts.vue'
 // import type { LocationQueryValue, LocationQuery } from 'vue-router'
 
@@ -66,7 +67,7 @@ export default {
 
 	watch: {
 		async $route() {
-			const routeSegment = this.routeSegment;
+			const {routeSegment} = this;
 
 			if (typeof routeSegment === "string") {
 				this.dishes = await getSegment(routeSegment);
@@ -78,7 +79,7 @@ export default {
 	},
 
 	created() {
-		const routeSegment = this.routeSegment;
+		const {routeSegment} = this;
 
 		if (typeof routeSegment === 'string') {
 			this.segmentId = routeSegment

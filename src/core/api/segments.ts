@@ -6,16 +6,9 @@ export interface Segment {
 export type Segments = Segment[];
 
 /**
- * Возвращает блюда из сегмента по переданному id
+ * Возвращает сегменты меню по переданному
  * @param id
  */
-
-export function getSegment(id: string): Promise<Segments> {
-	return fetch(`http://localhost:5540/api/menu/segments/${id}`)
-		.then((r) => {
-			return r.json()
-		})
-}
 
 export function getSegments() :Promise<Segment[]> {
 	return fetch('http://localhost:5540/api/menu/segments')
