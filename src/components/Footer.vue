@@ -1,8 +1,6 @@
 <template>
 	<div class="footer">
-			<router-link to="/">
-				<img src="@/assets/img/logo.svg" alt="food" class="sidebar__logo">
-			</router-link>
+			<Logo/>
 			<a href="#" class="footer__politics">
 				Политика конфиденциальности
 			</a>
@@ -16,8 +14,11 @@
 </template>
 
 <script lang="ts">
+import Logo from "@/components/Logo.vue"
 export default {
-
+	components: {
+		Logo,
+	}
 }
 </script>
 

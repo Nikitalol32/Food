@@ -1,7 +1,16 @@
 <template>
 	<div id="app">
-		<SideBar></SideBar>
-		<router-view/>
+		<Reservation
+			v-if="openModal"
+			v-on:showModal="showModal"
+		/>
+		<SideBar
+			v-if="!openModal"
+			v-on:showModal="showModal"
+		></SideBar>
+		<router-view
+			v-on:showModal="showModal"
+		/>
 		<FooterComponent></FooterComponent>
 	</div>
 </template>
@@ -9,12 +18,35 @@
 <script lang="ts">
 import SideBar from '@/components/SideBar.vue'
 import FooterComponent from '@/components/Footer.vue'
-
+import Reservation from '@/components/Reservation.vue'
 
 export default {
+	data() {
+		return {
+			openModal: false,
+		}
+	},
+
 	components: {
 		SideBar,
 		FooterComponent,
+		Reservation,
+	},
+
+	methods: {
+		showModal(isOpen: boolean) {
+			this.openModal = isOpen;
+			window.scrollTo(0, 0);
+
+			if (isOpen) {
+				document.querySelector('.home__nav-container')?.classList.add('hidden');
+				document.body.style.overflow = 'hidden';
+
+			} else {
+				document.querySelector('.home__nav-container')?.classList.remove('hidden');
+				document.body.style.overflow = '';
+			}
+		}
 	}
 }
 </script>
@@ -50,7 +82,7 @@ export default {
 *
 	margin 0
 	padding 0
-	--border 1px solid rgba(51, 51, 51, 0.2);
+	--border 1px solid rgba(51, 51, 51, 1);
 	--dark #262525
 	--brown-of-light #B59571
 	font-family Circe
@@ -65,7 +97,7 @@ html
 #app
 	height 100%
 	width 100%
-
+	position relative
 
 .chapter-container
 	display flex
@@ -85,5 +117,8 @@ html
 	height 3px
 	background-color var(--brown-of-light)
 	border-radius 1px
+
+.hidden
+	visibility hidden
 
 </style>

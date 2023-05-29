@@ -3,18 +3,12 @@
 		<div class="home__main">
 
 				<div class="home__main-text-container">
-					<nav class="home__nav-container">
-						<div class="home__nav">
-							<router-link
-								class="home__nav-item"
-								to="/menu"
-							>
-								Меню
-							</router-link>
-							<div class="home__nav-item">Доставка</div>
-							<div class="home__nav-item">Оплата</div>
-							<div class="home__nav-item">Бронь столика</div>
-						</div>
+					<nav
+						class="home__nav-container"
+					>
+						<Navigation
+							v-on:showModal="showModal"
+						/>
 					</nav>
 
 					<h1 class="home__main-text">
@@ -92,17 +86,32 @@
 					</div>
 				</div>
 			</section>
-			<ContactChapter/>
+			<Contacts/>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import ContactChapter from "@/components/Contacts.vue"
+import Contacts from "@/components/Contacts.vue"
+import Navigation from "@/components/Navigation.vue"
+
 export default {
+	data() {
+		return {
+		}
+	},
+
 	components: {
-		ContactChapter,
-	}
+		Contacts,
+		Navigation,
+	},
+
+	methods: {
+		showModal() {
+			this.$emit("showModal", true);
+		},
+	},
+
 }
 </script>
 
@@ -163,32 +172,6 @@ heading()
 		flex-direction row
 		justify-content flex-end
 		margin 30px 100px 0px 0px
-
-	&__nav
-		width max-content
-		display flex
-		flex-direction row
-		align-items center
-		box-sizing border-box
-
-		&-item
-			font-family Circe
-			font-weight 400
-			font-size 16px
-			color #fff
-			padding 10px 0px
-			margin-right 50px
-			cursor pointer
-			letter-spacing 1px
-			transition .7s ease
-			text-decoration none
-
-			&:last-child
-				margin-right 0
-
-			&:hover
-				background-color var(--brown-of-light)
-				padding 10px 20px
 
 	&__content
 		margin-left 16%

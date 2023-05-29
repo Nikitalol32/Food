@@ -1,17 +1,30 @@
 <template>
-	<div class="sidebar">
+	<div
+		class="sidebar"
+		:class="{active: isActive, hidden: isOpenModal}"
+	>
 		<div class="sidebar__container">
-			<router-link
-				class="sidebar__logo-container"
-				to="/"
-			>
-				<img src="@/assets/img/logo.svg" alt="" class="sidebar__logo">
-			</router-link>
-			<div class="sidebar__menu-icon">
-				<div class="sidebar__menu-icon-stick"></div>
-				<div class="sidebar__menu-icon-stick"></div>
-				<div class="sidebar__menu-icon-stick"></div>
+			<Logo class="sidebar__logo" @click="closeSidebar"/>
+			<div class="sidebar__close-icon" @click="closeSidebar">
+				<div class="sidebar__close-stick"></div>
+				<div class="sidebar__close-stick"></div>
 			</div>
+			<div
+				class="sidebar__open-icon"
+				@click="openSidebar"
+				ref="menuIcon"
+			>
+				<div class="sidebar__open-stick"></div>
+				<div class="sidebar__open-stick"></div>
+				<div class="sidebar__open-stick"></div>
+			</div>
+		</div>
+
+		<div class="sidebar__nav">
+			<Navigation
+				:closeSidebar="closeSidebar"
+				v-on:showModal="showModal"
+			/>
 		</div>
 
 		<div class="sidebar__links">
@@ -29,7 +42,48 @@
 </template>
 
 <script lang="ts">
+import Navigation from '@/components/Navigation.vue'
+import Logo from '@/components/Logo.vue'
+
 export default {
+	props: {
+		openModal: Boolean,
+	},
+	data() {
+		return {
+			isActive: false as boolean,
+			isOpenModal: false as boolean,
+		}
+	},
+
+	components: {
+		Navigation,
+		Logo,
+	},
+
+	methods: {
+		openSidebar() {
+			this.isActive = true;
+			document.body.style.overflow = "hidden";
+		},
+
+		closeSidebar() {
+			this.isActive = false;
+			document.body.style.overflow = "";
+		},
+
+		showModal(isOpen: boolean) {
+			this.isOpenModal = isOpen;
+			this.$emit('showModal', isOpen);
+		}
+	},
+
+	watch: {
+		$route() {
+			this.closeSidebar();
+			window.scrollTo(0, 0);
+		}
+	}
 
 }
 </script>
@@ -45,7 +99,7 @@ export default {
 	align-items center
 	background-color var(--dark)
 
-	&__menu-icon
+	&__open-icon
 		display flex
 		flex-direction column
 		justify-content space-between
@@ -53,32 +107,54 @@ export default {
 		height 24.33px
 		cursor pointer
 
-		&:hover > .sidebar__menu-icon-stick
+		&:hover > .sidebar__open-stick
 			width 100%
 
-		&-stick
-			width 90%
-			height 3px
-			border-radius 3px
-			background-color var(--brown-of-light)
-			transition .7s ease-in-out
+	&__open-stick
+		width 90%
+		height 3px
+		border-radius 3px
+		background-color var(--brown-of-light)
+		transition .7s ease-in-out
 
-			&:first-child
-				width 53%
+		&:first-child
+			width 53%
 
-			&:last-child
-				width 66%
+		&:last-child
+			width 66%
+
+	&__close-icon
+		width 21px
+		height @width
+		display none
+		cursor pointer
+		align-items center
+
+	&__close-stick
+		width 20px
+		height 3px
+		border-radius 3px
+		background-color var(--brown-of-light)
+		position absolute
+		cursor pointer
+
+		&:first-child
+			transform rotate(45deg)
+
+		&:last-child
+			transform rotate(-45deg)
 
 	&__container
 		display flex
 		flex-direction column
 		align-items center
-
-	&__logo-container
-		margin-bottom 28px
+		margin-bottom 103px
 
 	&__logo
-		cursor pointer
+		margin-bottom 28px
+
+	&__nav
+		display none
 
 	&__links
 		display flex
@@ -96,4 +172,38 @@ export default {
 	&__link:last-child
 		margin-bottom 0px
 
+.active
+	width 100%
+	z-index 1
+
+	& .sidebar__open-icon
+		display none
+
+	& .sidebar__close-icon
+		display flex
+
+	& .sidebar__nav
+		display block
+
+	& .nav
+		flex-direction column
+		align-items center
+		margin-bottom 103px
+
+		&-item
+			margin 0 0 60px 0
+			font-size 48px
+
+	& .sidebar__links
+		flex-direction row
+		align-items center
+
+	& .sidebar__link
+		margin 0 25px 0 0
+
+		&:last-child
+			margin-right 0
+
+.hidden
+	visibility hidden
 </style>
