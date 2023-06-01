@@ -1,16 +1,7 @@
 <template>
 	<div id="app">
-		<Reservation
-			v-if="openModal"
-			v-on:showModal="showModal"
-		/>
-		<SideBar
-			v-if="!openModal"
-			v-on:showModal="showModal"
-		></SideBar>
-		<router-view
-			v-on:showModal="showModal"
-		/>
+		<SideBar></SideBar>
+		<router-view/>
 		<FooterComponent></FooterComponent>
 	</div>
 </template>
@@ -18,36 +9,17 @@
 <script lang="ts">
 import SideBar from '@/components/SideBar.vue'
 import FooterComponent from '@/components/Footer.vue'
-import Reservation from '@/components/Reservation.vue'
 
 export default {
 	data() {
 		return {
-			openModal: false,
 		}
 	},
 
 	components: {
 		SideBar,
 		FooterComponent,
-		Reservation,
 	},
-
-	methods: {
-		showModal(isOpen: boolean) {
-			this.openModal = isOpen;
-			window.scrollTo(0, 0);
-
-			if (isOpen) {
-				document.querySelector('.home__nav-container')?.classList.add('hidden');
-				document.body.style.overflow = 'hidden';
-
-			} else {
-				document.querySelector('.home__nav-container')?.classList.remove('hidden');
-				document.body.style.overflow = '';
-			}
-		}
-	}
 }
 </script>
 

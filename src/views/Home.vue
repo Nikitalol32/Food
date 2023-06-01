@@ -3,12 +3,8 @@
 		<div class="home__main">
 
 				<div class="home__main-text-container">
-					<nav
-						class="home__nav-container"
-					>
-						<Navigation
-							v-on:showModal="showModal"
-						/>
+					<nav class="home__nav-container">
+						<Navigation/>
 					</nav>
 
 					<h1 class="home__main-text">
@@ -104,12 +100,6 @@ export default {
 	components: {
 		Contacts,
 		Navigation,
-	},
-
-	methods: {
-		showModal() {
-			this.$emit("showModal", true);
-		},
 	},
 
 }

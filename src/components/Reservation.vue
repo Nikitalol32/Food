@@ -1,5 +1,5 @@
 <template>
-	<modal class="reservation-container">
+	<div class="reservation-container">
 		<div class="reservation">
 			<div class="close-icon-container">
 				<div class="close-icon" @click="closeModal">
@@ -21,7 +21,7 @@
 				Забронировать
 			</button>
 		</div>
-	</modal>
+	</div>
 </template>
 
 <script lang="ts">
@@ -34,7 +34,7 @@ export default {
 	},
 	methods: {
 		closeModal() {
-			this.$emit("showModal", false);
+			this.$emit("showModal");
 		}
 	}
 }
@@ -77,6 +77,7 @@ export default {
 	align-items center
 	justify-content center
 	background-color rgba(61, 60, 60, .5)
+	top 0
 
 .reservation
 	display flex

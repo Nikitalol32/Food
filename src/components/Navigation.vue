@@ -3,7 +3,7 @@
 		<router-link
 			class="nav-item"
 			to="/menu"
-			@click="closeSidebar()"
+			@click="menuClick"
 		>
 			Меню
 		</router-link>
@@ -11,16 +11,23 @@
 		<div class="nav-item" @click="closeSidebar()">Оплата</div>
 		<router-link
 			class="nav-item"
-			@click="showModal"
+			@click="showModal(true)"
 			to="/"
 		>
 			Бронь столика
 		</router-link>
+		<DialogModal v-if="modalActive">
+			<Reservation
+				@showModal="showModal"
+			/>
+		</DialogModal>
 	</div>
 
 </template>
 
-<script lang='ts'>
+<script lang="ts">
+import DialogModal from '@/components/DialogModal.vue';
+import Reservation from '@/components/Reservation.vue';
 
 export default {
 	props: {
@@ -29,12 +36,38 @@ export default {
 
 	data() {
 		return {
+			modalActive: false,
 		}
 	},
 
+	components: {
+		DialogModal,
+		Reservation,
+	},
+
 	methods: {
-		showModal() {
-			this.$emit("showModal", true);
+		showModal(isShow: boolean) {
+			if (this.closeSidebar) {
+				this.closeSidebar();
+			}
+
+			if (this.modalActive) {
+				document.body.style.overflow = ''
+
+			} else {
+				document.body.style.overflow = 'hidden';
+				window.scrollTo(0, 0);
+			}
+
+			this.modalActive = isShow;
+		},
+
+		menuClick() {
+			if (this.closeSidebar) {
+				this.closeSidebar();
+
+			}
+
 		}
 	},
 }
