@@ -1,16 +1,11 @@
 <template>
 	<div class="home">
 		<div class="home__main">
+			<Navigation :class="{'home__nav': bgNavIsActive}"/>
 
-				<div class="home__main-text-container">
-					<nav class="home__nav-container">
-						<Navigation/>
-					</nav>
-
-					<h1 class="home__main-text">
-						Видовой ресторан Food Exxe Relo на Крестовском острове
-					</h1>
-				</div>
+			<h1 class="home__main-text">
+				Видовой ресторан Food Exxe Relo на Крестовском острове
+			</h1>
 
 		</div>
 
@@ -94,6 +89,7 @@ import Navigation from "@/components/Navigation.vue"
 export default {
 	data() {
 		return {
+			bgNavIsActive: false,
 		}
 	},
 
@@ -101,6 +97,17 @@ export default {
 		Contacts,
 		Navigation,
 	},
+
+	created() {
+		window.onscroll = () => {
+			if (window.scrollY >= 100) {
+				this.bgNavIsActive = true;
+				return;
+			}
+
+			this.bgNavIsActive = false;
+		}
+	}
 
 }
 </script>
@@ -126,25 +133,19 @@ heading()
 	width 100%
 	display flex
 	flex-direction column
+	position relative
+
+	&__nav
+		background-color var(--dark)
 
 	&__main
+		position relative
 		width 100%
 		height 100vh
-		display flex
-		flex-direction column
-		justify-content space-between
 		box-sizing border-box
 		background-image url('@/assets/img/home-bg.jpg')
 		background-repeat no-repeat
 		background-size cover
-		margin-bottom 150px
-
-		&-text-container
-			display flex
-			flex-direction column
-			justify-content space-between
-			width 100%
-			height 100%
 
 		&-text
 			font-family Circe
@@ -153,21 +154,16 @@ heading()
 			width 100%
 			color white
 			font-size 54px
-			margin-bottom 100px
 			margin-left 22%
-
-	&__nav-container
-		height max-content
-		display flex
-		flex-direction row
-		justify-content flex-end
-		margin 30px 100px 0px 0px
+			position absolute
+			bottom 150px
 
 	&__content
 		margin-left 16%
 		display flex
 		flex-direction column
 		padding-right 30px
+		padding-top 150px
 
 	&__about
 		display flex
@@ -269,7 +265,7 @@ heading()
 			width 416px
 			height 240px
 			box-sizing border-box
-			border 1px solid rgba(51, 51, 51, 0.2)
+			border var(--border)
 			margin-bottom 64px
 
 		&-photo

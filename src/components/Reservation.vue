@@ -1,5 +1,5 @@
 <template>
-	<div class="reservation-container">
+	<div class="reservation-container" :style="{top: modalPos}">
 		<div class="reservation">
 			<div class="close-icon-container">
 				<div class="close-icon" @click="closeModal">
@@ -10,14 +10,30 @@
 			<Logo class="reservation__logo"/>
 			<h2 class="reservation__header">Забронировать столик</h2>
 			<div class="reservation__inputs">
-				<input placeholder="Имя" type="input" class="reservation__input">
-				<input placeholder="Телефон" type="input" class="reservation__input">
+				<input
+					placeholder="Имя"
+					type="input"
+					class="reservation__input"
+				>
+				<input
+					placeholder="Телефон"
+					type="input"
+					class="reservation__input"
+				>
 				<div>
-					<input placeholder="Гостей" type="input" class="reservation__input reservation__input_guest">
-					<input placeholder="Время" type="input" class="reservation__input reservation__input_time">
+					<input
+						placeholder="Гостей"
+						type="input"
+						class="reservation__input reservation__input_guest"
+					>
+					<input
+						placeholder="Время"
+						type="input"
+						class="reservation__input reservation__input_time"
+					>
 				</div>
 			</div>
-			<button class="reservation__button">
+			<button @click="reserve" class="reservation__button">
 				Забронировать
 			</button>
 		</div>
@@ -28,46 +44,31 @@
 import Logo from "@/components/Logo.vue"
 
 export default {
+	data() {
+		return {
+			modalPos: '0px',
+			inputError: false,
+		}
+	},
 
 	components: {
 		Logo,
 	},
+
 	methods: {
 		closeModal() {
-			this.$emit("showModal");
-		}
-	}
+			this.$emit("showModal", false);
+		},
+
+	},
+
+	created() {
+		this.modalPos = (window.scrollY).toString() + 'px';
+	},
 }
 </script>
 
 <style lang="stylus">
-.close-icon-container
-	position absolute
-	top 30px
-	right 30px
-
-.close-icon
-	display flex
-	align-items center
-	justify-content center
-	position relative
-	width 25px
-	height @width
-	cursor pointer
-
-	&__stick
-		background-color var(--brown-of-light)
-		width 20px
-		height 2px
-		border-radius 5px
-		position absolute
-
-		&:first-child
-			transform rotate(-45deg)
-
-		&:last-child
-			transform rotate(45deg)
-
 .reservation-container
 	width 100%
 	height 100vh
@@ -130,5 +131,34 @@ export default {
 			background-color var(--brown-of-light)
 			border 1px solid rgba(0, 0, 0, 0)
 
+.close-icon-container
+	position absolute
+	top 30px
+	right 30px
+
+.close-icon
+	display flex
+	align-items center
+	justify-content center
+	position relative
+	width 25px
+	height @width
+	cursor pointer
+
+	&__stick
+		background-color var(--brown-of-light)
+		width 20px
+		height 2px
+		border-radius 5px
+		position absolute
+
+		&:first-child
+			transform rotate(-45deg)
+
+		&:last-child
+			transform rotate(45deg)
+
+.input-error
+	border 1.5px solid #852d2d
 
 </style>

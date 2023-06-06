@@ -20,15 +20,16 @@
 			</div>
 		</div>
 
-		<div class="sidebar__nav">
+		<div class="sidebar__nav-container">
 			<Navigation
+				class="sidebar__nav"
 				:closeSidebar="closeSidebar"
 				v-on:showModal="showModal"
 			/>
 		</div>
 
 		<div class="sidebar__links">
-			<a href="" class="sidebar__link">
+			<a href="https://www.youtube.com/watch?v=Zo_eZrICCBw" class="sidebar__link">
 				<img class="sidebar_link-icon" src="@/assets/img/youtube.svg">
 			</a>
 			<a href="https://vk.com/video299855748_456240381" class="sidebar__link">
@@ -98,6 +99,7 @@ export default {
 	justify-content space-between
 	align-items center
 	background-color var(--dark)
+	z-index 99
 
 	&__open-icon
 		display flex
@@ -148,13 +150,24 @@ export default {
 		display flex
 		flex-direction column
 		align-items center
-		margin-bottom 103px
 
 	&__logo
 		margin-bottom 28px
 
+	&__nav-container
+		display flex
+		justify-content center
+		width 100%
+		height 100%
+
 	&__nav
 		display none
+		flex-direction column
+		justify-content center
+		align-items center
+		width max-content
+		height 100%
+		padding 0
 
 	&__links
 		display flex
@@ -174,7 +187,6 @@ export default {
 
 .active
 	width 100%
-	z-index 1
 
 	& .sidebar__open-icon
 		display none
@@ -182,13 +194,9 @@ export default {
 	& .sidebar__close-icon
 		display flex
 
-	& .sidebar__nav
-		display block
-
 	& .nav
-		flex-direction column
-		align-items center
-		margin-bottom 103px
+		display flex
+		position relative
 
 		&-item
 			margin 0 0 60px 0
@@ -206,4 +214,5 @@ export default {
 
 .hidden
 	visibility hidden
+
 </style>

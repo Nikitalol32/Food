@@ -54,7 +54,7 @@ export default {
 *
 	margin 0
 	padding 0
-	--border 1px solid rgba(51, 51, 51, 1);
+	--border 1px solid rgba(51, 51, 51, 0.2);
 	--dark #262525
 	--brown-of-light #B59571
 	font-family Circe

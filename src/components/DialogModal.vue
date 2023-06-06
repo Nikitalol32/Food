@@ -1,15 +1,25 @@
 <template>
-	<Teleport to="body">
+	<Teleport
+		to="body"
+	>
 		<slot></slot>
 	</Teleport>
 </template>
 
 <script lang="ts">
-export default {
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
+export default {
+	props: ['modalActive'],
+
+	created() {
+		disablePageScroll();
+	},
+
+	beforeUnmount() {
+		enablePageScroll();
+	}
+
+	
 }
 </script>
-
-<style lang="stylus">
-
-</style>

@@ -9,14 +9,16 @@
 		</router-link>
 		<div class="nav-item" @click="closeSidebar()">Доставка</div>
 		<div class="nav-item" @click="closeSidebar()">Оплата</div>
-		<router-link
+		<div
 			class="nav-item"
 			@click="showModal(true)"
-			to="/"
 		>
 			Бронь столика
-		</router-link>
-		<DialogModal v-if="modalActive">
+		</div>
+		<DialogModal
+			:modalActive="modalActive"
+			v-if="modalActive"
+		>
 			<Reservation
 				@showModal="showModal"
 			/>
@@ -36,7 +38,8 @@ export default {
 
 	data() {
 		return {
-			modalActive: false,
+			modalPos: '',
+			modalActive: false
 		}
 	},
 
@@ -51,23 +54,13 @@ export default {
 				this.closeSidebar();
 			}
 
-			if (this.modalActive) {
-				document.body.style.overflow = ''
-
-			} else {
-				document.body.style.overflow = 'hidden';
-				window.scrollTo(0, 0);
-			}
-
 			this.modalActive = isShow;
 		},
 
 		menuClick() {
 			if (this.closeSidebar) {
 				this.closeSidebar();
-
 			}
-
 		}
 	},
 }
@@ -76,11 +69,16 @@ export default {
 <style lang="stylus">
 
 .nav
-	width max-content
+	width 100%
+	height 85px
 	display flex
 	flex-direction row
 	align-items center
 	box-sizing border-box
+	position fixed
+	padding 0px 100px 0 0
+	justify-content flex-end
+	z-index 98
 
 	&-item
 		font-family Circe
