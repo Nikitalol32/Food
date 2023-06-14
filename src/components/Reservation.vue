@@ -58,13 +58,11 @@ export default {
 	methods: {
 		closeModal() {
 			this.$emit("showModal", false);
+			console.log(123)
 		},
 
 	},
 
-	created() {
-		this.modalPos = (window.scrollY).toString() + 'px';
-	},
 }
 </script>
 
@@ -72,7 +70,7 @@ export default {
 .reservation-container
 	width 100%
 	height 100vh
-	position absolute
+	position fixed
 	z-index 999
 	display flex
 	align-items center

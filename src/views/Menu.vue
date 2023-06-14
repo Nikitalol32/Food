@@ -33,8 +33,8 @@
 
 <script lang="ts">
 import MenuCart from '@/components/DishCart.vue'
-import {type Segment, getSegments} from '@/core/api/segments'
-import {getSegment} from '@/core/api/getDishesBySegment'
+import { type Segment, getSegments } from '@/core/api/segments'
+import { getSegment } from '@/core/api/getDishesBySegment'
 import Contacts from '@/components/Contacts.vue'
 
 export default {
@@ -105,7 +105,7 @@ export default {
 				
 				this.$router.push({
 					path: '/menu',
-					query: {segment: this.segmentId}
+					query: {segment: this.segments[0].id}
 				});
 
 				if (this.segmentId !== '') {

@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="sidebar"
-		:class="{active: isActive, hidden: isOpenModal}"
+		:class="{active: isActive}"
 	>
 		<div class="sidebar__container">
 			<Logo class="sidebar__logo" @click="closeSidebar"/>
@@ -24,7 +24,6 @@
 			<Navigation
 				class="sidebar__nav"
 				:closeSidebar="closeSidebar"
-				v-on:showModal="showModal"
 			/>
 		</div>
 
@@ -43,13 +42,11 @@
 </template>
 
 <script lang="ts">
-import Navigation from '@/components/Navigation.vue'
-import Logo from '@/components/Logo.vue'
+import Navigation from '@/components/Navigation.vue';
+import Logo from '@/components/Logo.vue';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 export default {
-	props: {
-		openModal: Boolean,
-	},
 	data() {
 		return {
 			isActive: false as boolean,
@@ -65,26 +62,14 @@ export default {
 	methods: {
 		openSidebar() {
 			this.isActive = true;
-			document.body.style.overflow = "hidden";
+			disablePageScroll();
 		},
 
 		closeSidebar() {
 			this.isActive = false;
-			document.body.style.overflow = "";
-		},
-
-		showModal(isOpen: boolean) {
-			this.isOpenModal = isOpen;
-			this.$emit('showModal', isOpen);
+			enablePageScroll();
 		}
 	},
-
-	watch: {
-		$route() {
-			this.closeSidebar();
-			window.scrollTo(0, 0);
-		}
-	}
 
 }
 </script>
@@ -211,8 +196,4 @@ export default {
 
 		&:last-child
 			margin-right 0
-
-.hidden
-	visibility hidden
-
 </style>

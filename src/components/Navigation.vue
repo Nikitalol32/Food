@@ -1,5 +1,5 @@
 <template>
-	<div class="nav">
+	<div class="nav" ref="nav">
 		<router-link
 			class="nav-item"
 			to="/menu"
@@ -15,14 +15,11 @@
 		>
 			Бронь столика
 		</div>
-		<DialogModal
-			:modalActive="modalActive"
-			v-if="modalActive"
-		>
-			<Reservation
-				@showModal="showModal"
-			/>
-		</DialogModal>
+		<keep-alive>
+			<component v-if="modalActive" :is="modal" :navTarget="this.$refs.nav">
+				<Reservation v-show="modalActive" @showModal="showModal"/>
+			</component >
+		</keep-alive>
 	</div>
 
 </template>
@@ -39,7 +36,8 @@ export default {
 	data() {
 		return {
 			modalPos: '',
-			modalActive: false
+			modalActive: false,
+			modal: '',
 		}
 	},
 
@@ -55,6 +53,11 @@ export default {
 			}
 
 			this.modalActive = isShow;
+
+			if (this.modal === '') {
+				this.modal = 'DialogModal';
+
+			} else this.modal = ''
 		},
 
 		menuClick() {
@@ -63,6 +66,7 @@ export default {
 			}
 		}
 	},
+
 }
 </script>
 

@@ -2,20 +2,12 @@
 	<router-link
 		class="logo"
 		to="/"
-		@click="clickLogo"
 	>
 		<img src="@/assets/img/logo.svg" alt="" class="logo-img">
 	</router-link>
 </template>
 
-<script>
-export default {
-	methods: {
-		clickLogo() {
-			window.scrollTo(0, 0);
-		}
-	}
-}
+<script lang="ts">
 </script>
 
 <style lang="stylus">
