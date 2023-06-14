@@ -10,12 +10,16 @@
 import SideBar from '@/components/SideBar.vue'
 import FooterComponent from '@/components/Footer.vue'
 
-
 export default {
+	data() {
+		return {
+		}
+	},
+
 	components: {
 		SideBar,
 		FooterComponent,
-	}
+	},
 }
 </script>
 
@@ -65,7 +69,7 @@ html
 #app
 	height 100%
 	width 100%
-
+	position relative
 
 .chapter-container
 	display flex
@@ -85,5 +89,8 @@ html
 	height 3px
 	background-color var(--brown-of-light)
 	border-radius 1px
+
+.hidden
+	visibility hidden
 
 </style>

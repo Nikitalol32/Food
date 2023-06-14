@@ -9,7 +9,9 @@
 					class="menu__nav-item"
 					v-for="item in segments"
 					:key="item.id"
-					@click="segmentClick(item.id)"
+					@click="segmentClick(item.id, $event)"
+					ref="nav-item"
+					:class="{'nav-item-focus': item.id === this.segmentId}"
 				>
 				{{item.title}}
 				</li>
@@ -31,10 +33,9 @@
 
 <script lang="ts">
 import MenuCart from '@/components/DishCart.vue'
-import {type Segment, getSegments} from '@/core/api/segments'
-import {getSegment} from '@/core/api/getDishesBySegment'
+import { type Segment, getSegments } from '@/core/api/segments'
+import { getSegment } from '@/core/api/getDishesBySegment'
 import Contacts from '@/components/Contacts.vue'
-// import type { LocationQueryValue, LocationQuery } from 'vue-router'
 
 export default {
 	data() {
@@ -51,11 +52,23 @@ export default {
 	},
 
 	methods: {
-		segmentClick(id: string) {
+		segmentClick(id: string, event: Event) {
 			this.$router.push({
 				path: '/menu',
 				query: {segment: id}
 			});
+
+			const navItems = this.$refs['nav-item'] as HTMLElement[];
+
+			for (let i = 0; navItems.length > i; i++) {
+				if (navItems[i].classList.contains('nav-item-focus')) {
+					navItems[i].classList.remove('nav-item-focus')
+					break
+				}
+			}
+			const target = event.target as HTMLElement;
+
+			target.classList.add('nav-item-focus');
 		}
 	},
 
@@ -72,7 +85,6 @@ export default {
 			if (typeof routeSegment === "string") {
 				this.dishes = await getSegment(routeSegment);
 				this.segmentId = routeSegment;
-
 			}
 
 		}
@@ -90,9 +102,14 @@ export default {
 			.then((r) => {
 				this.segments = r;
 
+				
+				this.$router.push({
+					path: '/menu',
+					query: {segment: this.segments[0].id}
+				});
+
 				if (this.segmentId !== '') {
 					return getSegment(this.segmentId);
-
 				}
 
 				return getSegment(this.segments[0].id);
@@ -160,10 +177,6 @@ export default {
 			&:last-child
 				margin-right 0
 
-			&:active
-				border-bottom 3px solid var(--brown-of-light)
-				padding-bottom 2px
-
 			&:hover
 				border-bottom 3px solid var(--brown-of-light)
 				padding-bottom 2px
@@ -176,6 +189,10 @@ export default {
 	&__cart
 		margin-bottom 25px
 		margin-right 25px
+
+.nav-item-focus
+	border-bottom 3px solid var(--brown-of-light)
+	padding-bottom 2px
 
 @media (min-width $bp-one) {
 	.menu__cart:nth-child(4n) {

@@ -1,26 +1,11 @@
 <template>
 	<div class="home">
 		<div class="home__main">
+			<Navigation :class="{'home__nav': bgNavIsActive}"/>
 
-				<div class="home__main-text-container">
-					<nav class="home__nav-container">
-						<div class="home__nav">
-							<router-link
-								class="home__nav-item"
-								to="/menu"
-							>
-								Меню
-							</router-link>
-							<div class="home__nav-item">Доставка</div>
-							<div class="home__nav-item">Оплата</div>
-							<div class="home__nav-item">Бронь столика</div>
-						</div>
-					</nav>
-
-					<h1 class="home__main-text">
-						Видовой ресторан Food Exxe Relo на Крестовском острове
-					</h1>
-				</div>
+			<h1 class="home__main-text">
+				Видовой ресторан Food Exxe Relo на Крестовском острове
+			</h1>
 
 		</div>
 
@@ -92,17 +77,40 @@
 					</div>
 				</div>
 			</section>
-			<ContactChapter/>
+			<Contacts/>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import ContactChapter from "@/components/Contacts.vue"
+import Contacts from "@/components/Contacts.vue"
+import Navigation from "@/components/Navigation.vue"
+
 export default {
+	data() {
+		return {
+			bgNavIsActive: false,
+		}
+	},
+
 	components: {
-		ContactChapter,
+		Contacts,
+		Navigation,
+	},
+
+	created() {
+		window.onscroll = () => {
+			if (window.scrollY >= 100) {
+				this.bgNavIsActive = true;
+				return;
+			}
+
+			this.bgNavIsActive = false;
+		}
+
+		window.scrollTo(0, 0);
 	}
+
 }
 </script>
 
@@ -127,25 +135,19 @@ heading()
 	width 100%
 	display flex
 	flex-direction column
+	position relative
+
+	&__nav
+		background-color var(--dark)
 
 	&__main
+		position relative
 		width 100%
 		height 100vh
-		display flex
-		flex-direction column
-		justify-content space-between
 		box-sizing border-box
 		background-image url('@/assets/img/home-bg.jpg')
 		background-repeat no-repeat
 		background-size cover
-		margin-bottom 150px
-
-		&-text-container
-			display flex
-			flex-direction column
-			justify-content space-between
-			width 100%
-			height 100%
 
 		&-text
 			font-family Circe
@@ -154,47 +156,16 @@ heading()
 			width 100%
 			color white
 			font-size 54px
-			margin-bottom 100px
 			margin-left 22%
-
-	&__nav-container
-		height max-content
-		display flex
-		flex-direction row
-		justify-content flex-end
-		margin 30px 100px 0px 0px
-
-	&__nav
-		width max-content
-		display flex
-		flex-direction row
-		align-items center
-		box-sizing border-box
-
-		&-item
-			font-family Circe
-			font-weight 400
-			font-size 16px
-			color #fff
-			padding 10px 0px
-			margin-right 50px
-			cursor pointer
-			letter-spacing 1px
-			transition .7s ease
-			text-decoration none
-
-			&:last-child
-				margin-right 0
-
-			&:hover
-				background-color var(--brown-of-light)
-				padding 10px 20px
+			position absolute
+			bottom 150px
 
 	&__content
 		margin-left 16%
 		display flex
 		flex-direction column
 		padding-right 30px
+		padding-top 150px
 
 	&__about
 		display flex
@@ -296,7 +267,7 @@ heading()
 			width 416px
 			height 240px
 			box-sizing border-box
-			border 1px solid rgba(51, 51, 51, 0.2)
+			border var(--border)
 			margin-bottom 64px
 
 		&-photo

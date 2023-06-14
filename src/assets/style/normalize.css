@@ -37,11 +37,6 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
 /* Grouping content
    ========================================================================== */
 
@@ -81,6 +76,17 @@ a {
 ul {
   list-style: none;
 }
+
+input {
+  background: none;
+  border: none;
+}
+
+button {
+  background-color: inherit;
+  cursor: pointer;
+}
+
 
 /**
  * 1. Remove the bottom border in Chrome 57-
@@ -167,7 +173,6 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */

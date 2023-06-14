@@ -60,7 +60,6 @@ export default {
 	&-container
 		display flex
 		flex-direction row
-		justify-content space-between
 
 	&-delivery-info
 		display flex
