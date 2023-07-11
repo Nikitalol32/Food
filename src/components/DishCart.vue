@@ -1,11 +1,16 @@
 <template>
 	<div class="menu-cart">
-		<img :src="image" :alt="name" class="menu-cart__img">
+		<img
+			:src="dish.img"
+			:alt="dish.name"
+			class="menu-cart__img"
+			@click="$emit('dishClick', dish.id)"
+		>
 		<div class="menu-cart__info">
-			<div class="menu-cart__name">{{name}}</div>
+			<div class="menu-cart__name">{{dish.name}}</div>
 			<div class="menu-cart__container">
 				<div class="menu-cart__price">
-					{{price}} 
+					{{dish.price}}
 					<img class="ruble-icon" src="@/assets/img/ruble-icon.svg" alt="">
 				</div>
 				<div class="menu-cart__button">В корзину</div>
@@ -17,9 +22,11 @@
 <script lang="ts">
 export default {
 	props: {
-		price: Number,
-		image: String,
-		name: String,
+		dish: Object,
+	},
+
+	created() {
+		console.log('dish', this.dish)
 	}
 }
 </script>
@@ -36,6 +43,7 @@ export default {
 	&__img
 		width 100%
 		height 220px
+		cursor pointer
 
 	&__info
 		padding 30px

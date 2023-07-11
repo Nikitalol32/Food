@@ -4,38 +4,30 @@
 			<img src="@/assets/img/basket.svg" class="menu__basket-icon">
 		</div>
 		<nav class="menu__nav">
-			<ul class="menu__nav-container">
-				<li
-					class="menu__nav-item"
-					v-for="item in segments"
-					:key="item.id"
-					@click="segmentClick(item.id, $event)"
-					ref="nav-item"
-					:class="{'nav-item-focus': item.id === this.segmentId}"
-				>
-				{{item.title}}
-				</li>
-			</ul>
+			<Segments
+				:basics="true"
+			@dishes="getDishes"
+			/>
 		</nav>
 		<div class="menu__carts">
 			<MenuCart
 				class="menu__cart"
 				v-for="dish in dishes"
 				:key="dish.id"
-				:name="dish.name"
-				:price="dish.price"
-				:image="dish.img"
+				:dish="dish"
+				@dishClick="dishClick"
 			/>
 		</div>
-		<Contacts/>
+		<Contacts
+		/>
 	</div>
 </template>
 
 <script lang="ts">
 import MenuCart from '@/components/DishCart.vue'
-import { type Segment, getSegments } from '@/core/api/segments'
-import { getSegment } from '@/core/api/getDishesBySegment'
+import type {Segment} from '@/core/api/segments'
 import Contacts from '@/components/Contacts.vue'
+import Segments from '@/components/Segments.vue'
 
 export default {
 	data() {
@@ -48,76 +40,22 @@ export default {
 
 	components: {
 		MenuCart,
-		Contacts
+		Contacts,
+		Segments,
 	},
 
 	methods: {
-		segmentClick(id: string, event: Event) {
+		dishClick(dishId: string) {
 			this.$router.push({
-				path: '/menu',
-				query: {segment: id}
-			});
-
-			const navItems = this.$refs['nav-item'] as HTMLElement[];
-
-			for (let i = 0; navItems.length > i; i++) {
-				if (navItems[i].classList.contains('nav-item-focus')) {
-					navItems[i].classList.remove('nav-item-focus')
-					break
-				}
-			}
-			const target = event.target as HTMLElement;
-
-			target.classList.add('nav-item-focus');
-		}
-	},
-
-	computed: {
-		routeSegment() {
-			return this.$route.query['segment']
-		}
-	},
-
-	watch: {
-		async $route() {
-			const {routeSegment} = this;
-
-			if (typeof routeSegment === "string") {
-				this.dishes = await getSegment(routeSegment);
-				this.segmentId = routeSegment;
-			}
-
-		}
-	},
-
-	created() {
-		const {routeSegment} = this;
-
-		if (typeof routeSegment === 'string') {
-			this.segmentId = routeSegment
-
-		}
-
-		getSegments()
-			.then((r) => {
-				this.segments = r;
-
-				
-				this.$router.push({
-					path: '/menu',
-					query: {segment: this.segments[0].id}
-				});
-
-				if (this.segmentId !== '') {
-					return getSegment(this.segmentId);
-				}
-
-				return getSegment(this.segments[0].id);
+				path: '/dish-page',
+				name: 'dish-page',
+				params: {id: dishId}
 			})
-			.then((r) => {
-				this.dishes = r;
-			})
+		},
 
+		async getDishes(dishes: Segment[]) {
+			this.dishes = await dishes;
+		}
 	},
 
 }
@@ -131,7 +69,8 @@ export default {
 	flex-direction column
 	max-width 1341px
 	margin 0 auto 80px 16.3%
-	padding 0 25px
+	padding-left 25px
+	padding-right 25px
 
 	&__basket-icon
 		cursor pointer
@@ -189,6 +128,11 @@ export default {
 	&__cart
 		margin-bottom 25px
 		margin-right 25px
+
+	&__dish-page
+		display flex
+		justify-content center
+		margin-bottom 150px
 
 .nav-item-focus
 	border-bottom 3px solid var(--brown-of-light)
