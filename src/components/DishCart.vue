@@ -26,7 +26,7 @@ export default {
 	},
 
 	created() {
-		console.log('dish', this.dish)
+		
 	}
 }
 </script>

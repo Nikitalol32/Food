@@ -32,7 +32,6 @@ export default {
 	methods: {
 
 		segmentClick(id: string, event: Event) {
-			console.log(12356)
 			const {routerPush} = this;
 
 			routerPush(id);
@@ -53,8 +52,6 @@ export default {
 		async $route() {
 			const
 				{routeSegment} = this;
-
-			console.log('router')
 
 			if (typeof routeSegment === "string") {
 				this.$emit('dishes', await getSegment(routeSegment))
@@ -79,7 +76,6 @@ export default {
 		}
 
 		if (this.basics) {
-			console.log(123)
 			getSegments()
 				.then((r) => {
 					this.segments = r;
