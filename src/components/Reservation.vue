@@ -71,7 +71,7 @@ export default {
 	width 100%
 	height 100vh
 	position fixed
-	z-index 999
+	z-index 998
 	display flex
 	align-items center
 	justify-content center
@@ -85,6 +85,7 @@ export default {
 	background-color var(--dark)
 	padding 60.5px
 	position relative
+	z-index 999
 
 	&__logo
 		margin-bottom 58px

@@ -20,6 +20,12 @@ export default {
 		SideBar,
 		FooterComponent,
 	},
+
+	watch: {
+		$route() {
+			window.scrollTo(0, 0);
+		}
+	}
 }
 </script>
 
@@ -60,6 +66,7 @@ export default {
 	font-family Circe
 	box-sizing border-box
 	--breakpoint-one 1620px
+	--checkmark url('@/assets/img/checkmark.svg')
 
 body,
 html
@@ -67,7 +74,7 @@ html
 	height 100%
 
 #app
-	height 100%
+	min-height 100%
 	width 100%
 	position relative
 
