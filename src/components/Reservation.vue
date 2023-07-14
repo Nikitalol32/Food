@@ -58,7 +58,6 @@ export default {
 	methods: {
 		closeModal() {
 			this.$emit("showModal", false);
-			console.log(123)
 		},
 
 	},

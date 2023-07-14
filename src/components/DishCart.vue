@@ -1,10 +1,9 @@
 <template>
-	<div class="menu-cart">
+	<div class="menu-cart" @click="dishClick(dish.id, $event)">
 		<img
 			:src="dish.img"
 			:alt="dish.name"
 			class="menu-cart__img"
-			@click="$emit('dishClick', dish.id)"
 		>
 		<div class="menu-cart__info">
 			<div class="menu-cart__name">{{dish.name}}</div>
@@ -13,7 +12,7 @@
 					{{dish.price}}
 					<img class="ruble-icon" src="@/assets/img/ruble-icon.svg" alt="">
 				</div>
-				<div class="menu-cart__button">В корзину</div>
+				<div class="menu-cart__button" ref="button">В корзину</div>
 			</div>
 		</div>
 	</div>
@@ -25,8 +24,13 @@ export default {
 		dish: Object,
 	},
 
-	created() {
-		
+	methods: {
+		dishClick(id: string, e: PointerEvent) {
+
+			if (e.target !== this.$refs.button) {
+				this.$emit('dishClick', id);
+			}
+		}
 	}
 }
 </script>
@@ -43,7 +47,6 @@ export default {
 	&__img
 		width 100%
 		height 220px
-		cursor pointer
 
 	&__info
 		padding 30px

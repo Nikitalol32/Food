@@ -5,7 +5,7 @@
 		</div>
 		<nav class="menu__nav">
 			<Segments
-				:basics="true"
+				:doNeedARequestSegments="true"
 			@dishes="getDishes"
 			/>
 		</nav>
@@ -57,6 +57,10 @@ export default {
 			this.dishes = await dishes;
 		}
 	},
+
+	created() {
+		window.scrollTo(0, 0);
+	}
 
 }
 </script>

@@ -1,12 +1,12 @@
 <template>
 	<ul class="segments">
 		<li
-			class="segment"
 			v-for="item in segments"
 			:key="item.id"
 			@click="segmentClick(item.id, $event)"
-			ref="segment"
+			class="segment"
 			:class="{'segment-focus': item.id === this.segmentId}"
+			ref="segment"
 		>
 		{{item.title}}
 		</li>
@@ -26,13 +26,13 @@ export default {
 	},
 
 	props: {
-		basics: Boolean,
+		doNeedARequestSegments: Boolean,
 	},
 
 	methods: {
 
 		segmentClick(id: string, event: Event) {
-			const {routerPush} = this;
+			const routerPush = this.routerPush;
 
 			routerPush(id);
 
@@ -75,7 +75,7 @@ export default {
 			this.segmentId = routeSegment;
 		}
 
-		if (this.basics) {
+		if (this.doNeedARequestSegments) {
 			getSegments()
 				.then((r) => {
 					this.segments = r;

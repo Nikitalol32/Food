@@ -9,22 +9,21 @@
 <script lang="ts">
 import SideBar from '@/components/SideBar.vue'
 import FooterComponent from '@/components/Footer.vue'
+import router from '@/router/index'
 
 export default {
-	data() {
-		return {
-		}
-	},
-
 	components: {
 		SideBar,
 		FooterComponent,
 	},
+	mounted() {
+		router.beforeEach((to, from, next) => {
+			if (to.name !== from.name) {
+				window.scrollTo(0, 0);
+			}
 
-	watch: {
-		$route() {
-			window.scrollTo(0, 0);
-		}
+			next()
+		})
 	}
 }
 </script>

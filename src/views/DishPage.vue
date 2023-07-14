@@ -8,11 +8,11 @@
 		</div>
 		<div class="dish-page">
 			<div class="dish-page__images">
-				<img :srcset="dish.img" class="dish-page__main-image">
+				<img :src="dish.img" class="dish-page__main-image">
 				<div class="dish-page__gallery">
-					<img :srcset="dish.img" class="dish-page__gallery-item">
-					<img :srcset="dish.img" class="dish-page__gallery-item">
-					<img :srcset="dish.img" class="dish-page__gallery-item">
+					<img :src="dish.img" class="dish-page__gallery-item">
+					<img :src="dish.img" class="dish-page__gallery-item">
+					<img :src="dish.img" class="dish-page__gallery-item">
 				</div>
 			</div>
 			<div class="dish-page__info">
@@ -137,11 +137,15 @@ export default {
 	created() {
 		const
 			{getDish, getDishId} = this;
+
 		this.dishId = getDishId as String;
+
 		getDish(this.dishId)
 			.then((r) => {
 				this.dish = r;
 			});
+
+		window.scrollTo(0, 0);
 	}
 }
 </script>
