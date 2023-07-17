@@ -9,17 +9,22 @@
 <script lang="ts">
 import SideBar from '@/components/SideBar.vue'
 import FooterComponent from '@/components/Footer.vue'
+import router from '@/router/index'
 
 export default {
-	data() {
-		return {
-		}
-	},
-
 	components: {
 		SideBar,
 		FooterComponent,
 	},
+	mounted() {
+		router.beforeEach((to, from, next) => {
+			if (to.name !== from.name) {
+				window.scrollTo(0, 0);
+			}
+
+			next()
+		})
+	}
 }
 </script>
 
@@ -60,6 +65,7 @@ export default {
 	font-family Circe
 	box-sizing border-box
 	--breakpoint-one 1620px
+	--checkmark url('@/assets/img/checkmark.svg')
 
 body,
 html
@@ -67,7 +73,7 @@ html
 	height 100%
 
 #app
-	height 100%
+	min-height 100%
 	width 100%
 	position relative
 

@@ -45,9 +45,6 @@
 </template>
 
 <script lang="ts">
-export default {
-
-}
 </script>
 
 <style lang="stylus">
@@ -97,5 +94,16 @@ export default {
 		&-from
 			font-size 18px
 			font-weight 400
+
+
+.map
+	width 746px
+	height 450px
+	border 1px solid rgba(51, 51, 51, 0.2)
+	font-size 32px
+	font-family Circe
+	font-weight 400
+	text-align center
+
 
 </style>

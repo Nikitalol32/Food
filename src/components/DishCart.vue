@@ -1,14 +1,18 @@
 <template>
-	<div class="menu-cart">
-		<img :src="image" :alt="name" class="menu-cart__img">
+	<div class="menu-cart" @click="dishClick(dish.id, $event)">
+		<img
+			:src="dish.img"
+			:alt="dish.name"
+			class="menu-cart__img"
+		>
 		<div class="menu-cart__info">
-			<div class="menu-cart__name">{{name}}</div>
+			<div class="menu-cart__name">{{dish.name}}</div>
 			<div class="menu-cart__container">
 				<div class="menu-cart__price">
-					{{price}} 
+					{{dish.price}}
 					<img class="ruble-icon" src="@/assets/img/ruble-icon.svg" alt="">
 				</div>
-				<div class="menu-cart__button">В корзину</div>
+				<div class="menu-cart__button" ref="button">В корзину</div>
 			</div>
 		</div>
 	</div>
@@ -17,9 +21,16 @@
 <script lang="ts">
 export default {
 	props: {
-		price: Number,
-		image: String,
-		name: String,
+		dish: Object,
+	},
+
+	methods: {
+		dishClick(id: string, e: PointerEvent) {
+
+			if (e.target !== this.$refs.button) {
+				this.$emit('dishClick', id);
+			}
+		}
 	}
 }
 </script>
