@@ -108,7 +108,6 @@ export default {
 			this.bgNavIsActive = false;
 		}
 
-		window.scrollTo(0, 0);
 	}
 
 }

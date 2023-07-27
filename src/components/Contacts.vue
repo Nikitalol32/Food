@@ -38,16 +38,120 @@
 				</div>
 			</div>
 			<div class="map">
-				здесь будет карта с инфой
+				<YandexMap
+					class="ymaps"
+					:settings="settingsMap"
+					:coordinates="coordinates"
+					:zoom="zoom"
+				>
+					<YandexMarker
+						v-for="(restaurant, i) in restaurants"
+						:key="i"
+						:coordinates="[restaurant.coords[0] , restaurant.coords[1]]"
+						:marker-id="i"
+						icon="@/assets/img/yMarker.png"
+						class="marker"
+						@click="markClick(i)"
+					/>
+				</YandexMap>
+				<div class="description" v-if="openDescription">
+					<div class="description__close-icon" @click="openDescription = false">
+						<div class="description__close-icon-stick"></div>
+						<div class="description__close-icon-stick"></div>
+					</div>
+					<div class="description__address-and-number">
+						<div class="description__address-container">
+							<img src="@/assets/img/marker.svg" alt="" class="description__icon">
+							<div class="description__address">{{address}}</div>
+						</div>
+						<div class="description__number">
+							<img src="@/assets/img/call-icon.svg" alt="" class="description__icon">
+							<div class="description__call-number">{{number}}</div>
+						</div>
+					</div>
+					<div class="description__info">
+						<div class="description__header">Время работы</div>
+						<div class="description__work-hours-container">
+							<div class="description__work-hours">
+								<div class="description__days">Вск-Чт</div>
+								<div class="description__time">{{workTime[0]}}</div>
+							</div>
+							<div class="description__work-hours">
+								<div class="description__days">Пт-Сб</div>
+								<div class="description__time">{{workTime[1]}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 </template>
 
 <script lang="ts">
+import { YandexMap, YandexMarker } from 'vue-yandex-maps'
+
+import {type Restaurants, getRestaurants} from '@/core/api/restaurants'
+
+export default {
+	data() {
+		return {
+			coordinates: [] as Number[], // Текущие координаты
+			openDescription: false,
+			workTime: [] as String[], // Время работы ресторана
+			address: '' as String, // Адрес ресторана
+			number: '' as String, // Номер ресторана
+			zoom: 5, // Приближение карты
+			settingsMap: {
+				apiKey: 'f876e7a9-4258-48ef-a9f6-982167135f37', // Индивидуальный ключ API
+				lang: 'ru_RU', // Используемый язык
+				coordorder: 'latlong', // Порядок задания географических координат
+				debug: false, // Режим отладки
+				version: '2.1', // Версия Я.Карт
+			},
+			restaurants: [] as Restaurants, // Рестораны
+		}
+	},
+
+	methods: {
+		markClick(id: number) {
+			const {coords, full, number, workTime} = this.restaurants[id];
+
+			this.coordinates = coords;
+			this.address = full;
+			this.workTime = workTime;
+			this.number = number;
+			this.openDescription = true;
+			this.zoom = 16;
+		},
+	},
+
+	async created() {
+		const restaurants = await getRestaurants;
+
+		this.restaurants = restaurants;
+
+		this.coordinates = restaurants[0].coords
+
+	},
+
+	components: {
+		YandexMap,
+		YandexMarker
+	}
+
+}
 </script>
 
 <style lang="stylus">
+.ymaps
+	width 100%
+	height 100%
+
+.marker
+	width 15px
+	height @width
+	background-color blue
 
 .contact
 	display flex
@@ -97,6 +201,7 @@
 
 
 .map
+	position relative
 	width 746px
 	height 450px
 	border 1px solid rgba(51, 51, 51, 0.2)
@@ -105,5 +210,84 @@
 	font-weight 400
 	text-align center
 
+.description
+	position absolute
+	background-color rgba(91, 91, 91, 1)
+	top 310px
+	left -80px
+	display flex
+	flex-direction column
+	font-size 18px
+	padding 32px
+	color white
+	font-weight 100
+	max-width 450px
+
+	&__close-icon
+		position absolute
+		width 15px
+		height @width
+		margin-bottom 20px
+		right 10px
+		top 10px
+		cursor pointer
+
+		&-stick
+			background-color white
+			width 100%
+			height 2px
+			position absolute
+			top 50%
+
+			&:nth-child(1)
+				rotate 45deg
+				
+			&:nth-child(2)
+				rotate -45deg
+
+	&__address-and-number
+		display flex
+		flex-direction column
+		margin-bottom 30px
+
+	&__address-container
+		display flex
+		align-items center
+		margin-bottom 20px
+	
+	&__icon
+		width 20px
+		height @width
+		margin-right 15px
+
+	&__address
+		display flex
+		flex-wrap wrap
+		text-align start
+
+	&__number
+		display flex
+		align-items center
+		flex-direction row
+
+	&__call-number
+		height 16px
+
+	&__header
+		font-weight 400
+		font-size 20px
+		text-align start
+		margin-bottom 20px
+
+	&__work-hours
+		display flex
+		flex-direction row
+
+		&:nth-child(1)
+			margin-bottom 20px
+
+	&__days
+		font-weight 400
+		margin-right 15px
 
 </style>

@@ -15,12 +15,14 @@
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
 	},
 	"dependencies": {
+		"@yandex/ymaps3-types": "^0.0.12",
 		"concurrently": "^8.0.1",
 		"cors": "^2.8.5",
 		"scroll-lock": "^2.1.5",
 		"upath": "^2.0.1",
 		"vue": "^3.2.47",
 		"vue-router": "^4.0.13",
+		"vue-yandex-maps": "^1.1.0",
 		"wait-on": "7.0.1"
 	},
 	"devDependencies": {
