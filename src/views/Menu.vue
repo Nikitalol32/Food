@@ -6,16 +6,19 @@
 		<nav class="menu__nav">
 			<Segments
 				:doNeedARequestSegments="true"
-			@dishes="getDishes"
+				@dishes="getDishes"
+				@segmentId="getSegmentId"
 			/>
 		</nav>
 		<div class="menu__carts">
 			<MenuCart
 				class="menu__cart"
-				v-for="dish in dishes"
+				v-for="dish, i in dishes"
 				:key="dish.id"
 				:dish="dish"
 				@dishClick="dishClick"
+				:position="i"
+				:segmentId="segmentId"
 			/>
 		</div>
 		<Contacts
@@ -51,6 +54,10 @@ export default {
 				name: 'dish-page',
 				params: {id: dishId}
 			})
+		},
+
+		getSegmentId(segmentId: string) {
+			this.segmentId = segmentId;
 		},
 
 		async getDishes(dishes: Segment[]) {

@@ -1,5 +1,18 @@
 <template>
-	<div class="menu-cart" @click="dishClick(dish.id, $event)">
+	<div
+		class="menu-cart"
+		@click="dishClick(dish.id, $event)"
+		v-analytics="{
+			events: ['click', 'view'],
+			params: {
+				dishId: dish.id,
+				segmentId: segmentId,
+				position: position,
+				screen: screen
+			},
+			once: true
+		}"
+	>
 		<img
 			:src="dish.img"
 			:alt="dish.name"
@@ -19,9 +32,13 @@
 </template>
 
 <script lang="ts">
+
 export default {
 	props: {
 		dish: Object,
+		screen: String,
+		position: Number,
+		segmentId: String,
 	},
 
 	methods: {

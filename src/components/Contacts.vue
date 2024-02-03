@@ -89,9 +89,10 @@
 </template>
 
 <script lang="ts">
-import { YandexMap, YandexMarker } from 'vue-yandex-maps'
-
-import {type Restaurants, getRestaurants} from '@/core/api/restaurants'
+import { YandexMap, YandexMarker } from 'vue-yandex-maps'; // Яндекс карты
+import {type Restaurants, getRestaurants} from '@/core/api/restaurants'; // Рестораны
+// import dotenv from 'dotenv'
+// import {token} from '../../webpack.config'
 
 export default {
 	data() {
@@ -103,7 +104,7 @@ export default {
 			number: '' as String, // Номер ресторана
 			zoom: 5, // Приближение карты
 			settingsMap: {
-				apiKey: 'f876e7a9-4258-48ef-a9f6-982167135f37', // Индивидуальный ключ API
+				apiKey: import.meta.env.VITE_YAMAP_KEY, // Индивидуальный ключ API
 				lang: 'ru_RU', // Используемый язык
 				coordorder: 'latlong', // Порядок задания географических координат
 				debug: false, // Режим отладки
@@ -128,11 +129,10 @@ export default {
 
 	async created() {
 		const restaurants = await getRestaurants;
-
 		this.restaurants = restaurants;
 
 		this.coordinates = restaurants[0].coords
-
+		this.settingsMap.apiKey
 	},
 
 	components: {

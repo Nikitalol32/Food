@@ -1,5 +1,8 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import { analytics } from './directives/analytics';
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App);
+app.directive('analytics', analytics);
+app.use(router).mount('#app');

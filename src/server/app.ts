@@ -1,8 +1,12 @@
 import path from 'upath';
 import express from 'express';
 import cors from 'cors';
+import parser from 'body-parser'
 
-import { restaurants, segments, dishById, dishesBySegment } from '@/server/api';
+import {restaurants, segments, dishById, dishesBySegment, analyticsRoute} from '@/server/api';
+
+const 
+	jsonParser = parser.json();
 
 const
 	app = express(),
@@ -15,6 +19,7 @@ app.get('/api/restaurants', restaurants);
 app.get('/api/menu/segments', segments);
 app.get('/api/menu/segments/:segment', dishesBySegment);
 app.get('/api/dish/:id', dishById);
+app.post('/api/analytics', jsonParser, analyticsRoute);
 
 app.get('*', (req, res) => {
 	res.status(404).send('Not found');

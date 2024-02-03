@@ -45,7 +45,6 @@
 import Navigation from '@/components/Navigation.vue';
 import Logo from '@/components/Logo.vue';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
-
 export default {
 	data() {
 		return {

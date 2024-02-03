@@ -23,3 +23,9 @@
 - `GET` `http://localhost:5540/api/menu/segments` - Вернет все сегменты меню;
 - `GET` `http://localhost:5540/api/menu/segments/:segment` - Вернет еду из переданного сегментам;
 - `GET` `http://localhost:5540/api/dish/:id` - Вернет еду по переданному `id`.
+
+## Работа с проектом
+
+Для запуска сервера используем команду: `npm run server`.
+
+Для сборки и слежения используем команду : `npm run dev`

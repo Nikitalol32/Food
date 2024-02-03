@@ -16,6 +16,11 @@ export default {
 		SideBar,
 		FooterComponent,
 	},
+	methods: {
+		anal() {
+			console.log('anal')
+		}
+	},
 	mounted() {
 		router.beforeEach((to, from, next) => {
 			if (to.name !== from.name) {
