@@ -20,7 +20,7 @@ export function isAnalyticsValid(e: Array<object>) {
 		return true;
 	}
 
-	return true;
+	return false;
 }
 
 export function analyticsRoute(req: Request, res: Response) {

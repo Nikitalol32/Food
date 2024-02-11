@@ -1,6 +1,12 @@
 <template>
 	<div class="reservation-container" :style="{top: modalPos}">
-		<div class="reservation">
+		<div
+			class="reservation"
+			v-analytics="{
+				events: ['view'],
+				params: {slug: 'reservation'}
+			}"
+		>
 			<div class="close-icon-container">
 				<div class="close-icon" @click="closeModal">
 					<div class="close-icon__stick"></div>
@@ -14,26 +20,44 @@
 					placeholder="Имя"
 					type="input"
 					class="reservation__input"
+					v-model="name"
 				>
 				<input
 					placeholder="Телефон"
 					type="input"
 					class="reservation__input"
+					v-model="phone"
 				>
 				<div>
 					<input
 						placeholder="Гостей"
 						type="input"
 						class="reservation__input reservation__input_guest"
+						v-model="guest"
 					>
 					<input
 						placeholder="Время"
 						type="input"
 						class="reservation__input reservation__input_time"
+						v-model="time"
 					>
 				</div>
 			</div>
-			<button @click="reserve" class="reservation__button">
+			<button
+				@click="reserve"
+				class="reservation__button"
+				:key="[name, phone, guest, time]"
+				v-analytics="{
+					events: ['click'],
+					params: {
+						slug: 'reservation',
+						name: name,
+						phone: phone,
+						guest: guest,
+						time: time
+					}
+				}"
+			>
 				Забронировать
 			</button>
 		</div>
@@ -48,6 +72,10 @@ export default {
 		return {
 			modalPos: '0px',
 			inputError: false,
+			name: '',
+			phone: '',
+			guest: '',
+			time: ''
 		}
 	},
 
@@ -58,6 +86,10 @@ export default {
 	methods: {
 		closeModal() {
 			this.$emit("showModal", false);
+		},
+
+		reserve() {
+			this.closeModal();
 		},
 
 	},

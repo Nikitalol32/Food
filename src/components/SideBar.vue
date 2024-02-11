@@ -28,13 +28,40 @@
 		</div>
 
 		<div class="sidebar__links">
-			<a href="https://www.youtube.com/watch?v=Zo_eZrICCBw" class="sidebar__link">
+			<a
+				href="https://www.youtube.com/watch?v=Zo_eZrICCBw"
+				class="sidebar__link"
+				v-analytics="{
+					events: ['click'],
+					params: {
+						slug: 'sidebarYoutube',
+					}
+				}"
+			>
 				<img class="sidebar_link-icon" src="@/assets/img/youtube.svg">
 			</a>
-			<a href="https://vk.com/video299855748_456240381" class="sidebar__link">
+			<a
+				href="https://vk.com/video299855748_456240381"
+				class="sidebar__link"
+				v-analytics="{
+					events: ['click'],
+					params: {
+						slug: 'sidebarVk',
+					}
+				}"
+			>
 				<img class="sidebar_link-icon" src="@/assets/img/vk.svg">
 			</a>
-			<a href="https://t.me/+O75ZNR7zrbs5Yjdi" class="sidebar__link">
+			<a
+				href="https://t.me/+O75ZNR7zrbs5Yjdi"
+				class="sidebar__link"
+				v-analytics="{
+					events: ['click'],
+					params: {
+						slug: 'sidebarTelegram',
+					}
+				}"
+			>
 				<img class="sidebar_link-icon" src="@/assets/img/telegram.svg">
 			</a>
 		</div>
@@ -45,13 +72,14 @@
 import Navigation from '@/components/Navigation.vue';
 import Logo from '@/components/Logo.vue';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+
 export default {
 	data() {
 		return {
 			isActive: false as boolean,
 			isOpenModal: false as boolean,
 		}
-	},
+	}, 
 
 	components: {
 		Navigation,
@@ -84,6 +112,8 @@ export default {
 	align-items center
 	background-color var(--dark)
 	z-index 99
+	top 0
+	left 0
 
 	&__open-icon
 		display flex

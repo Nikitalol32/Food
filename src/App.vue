@@ -1,7 +1,11 @@
 <template>
 	<div id="app">
-		<SideBar></SideBar>
-		<router-view/>
+		<router-view
+			v-slot="{Component}"
+		>
+			<component :is="Component"/>
+			<SideBar></SideBar>
+		</router-view>
 		<FooterComponent></FooterComponent>
 	</div>
 </template>
@@ -15,11 +19,6 @@ export default {
 	components: {
 		SideBar,
 		FooterComponent,
-	},
-	methods: {
-		anal() {
-			console.log('anal')
-		}
 	},
 	mounted() {
 		router.beforeEach((to, from, next) => {

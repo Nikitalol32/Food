@@ -7,6 +7,12 @@
 			class="segment"
 			:class="{'segment-focus': item.id === this.segmentId}"
 			ref="segment"
+			v-analytics="{
+				events: ['click'],
+				params: {
+					segmentId: item.id
+				}
+			}"
 		>
 		{{item.title}}
 		</li>

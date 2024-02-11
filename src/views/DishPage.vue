@@ -1,7 +1,25 @@
 <template>
-	<div class="dish-page-wrapper">
+	<div
+		class="dish-page-wrapper"
+		v-analytics="{
+			events: ['view'],
+			params: {
+				slug: 'dish',
+				id: dishId
+			}
+		}"
+		>
 		<div class="dish-page__header">
-			<img src="@/assets/img/basket.svg" class="dish-page__basket-icon">
+			<img
+				src="@/assets/img/basket.svg"
+				class="dish-page__basket-icon"
+				v-analytics="{
+					events: ['click'],
+					params: {
+						slug: 'navPay'
+					}
+				}"
+			>
 		</div>
 		<div class="dish-page__segments">
 			<Segments/>
@@ -34,9 +52,19 @@
 							<div class="dish-page__plus-and-minus">
 								<button class="dish-page__counter-plus" @click="count(counter+1)"></button>
 								<button class="dish-page__counter-minus" @click="count(counter-1)"></button>
-							</div> 
+							</div>
 						</div>
-						<button class="dish-page__button">В корзину</button>
+						<button
+							class="dish-page__button"
+							v-analytics="{
+								events: ['click'],
+								params: {
+									dishId: dishId,
+								}
+							}"
+						>
+							В корзину
+						</button>
 					</div>
 				</div>
 				<div class="dish-page__optional">

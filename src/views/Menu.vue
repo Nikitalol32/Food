@@ -1,7 +1,24 @@
 <template>
-	<div class="menu">
+	<div
+		class="menu"
+		v-analytics="{
+			events: ['view'],
+			params: {
+				slug: 'menu'
+			}
+		}"
+	>
 		<div class="menu__header">
-			<img src="@/assets/img/basket.svg" class="menu__basket-icon">
+			<img
+				src="@/assets/img/basket.svg"
+				class="menu__basket-icon"
+				v-analytics="{
+					events: ['click'],
+					params: {
+						slug: 'navPay'
+					}
+				}"
+			>
 		</div>
 		<nav class="menu__nav">
 			<Segments
@@ -10,7 +27,7 @@
 				@segmentId="getSegmentId"
 			/>
 		</nav>
-		<div class="menu__carts">
+		<div class="menu__carts" :key="segmentId">
 			<MenuCart
 				class="menu__cart"
 				v-for="dish, i in dishes"
@@ -18,7 +35,6 @@
 				:dish="dish"
 				@dishClick="dishClick"
 				:position="i"
-				:segmentId="segmentId"
 			/>
 		</div>
 		<Contacts
@@ -36,7 +52,7 @@ export default {
 	data() {
 		return {
 			segments: [] as Segment[],
-			segmentId: '' as string,
+			segmentId: '' as string | undefined,
 			dishes: [] as Segment[],
 		}
 	},
