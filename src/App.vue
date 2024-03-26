@@ -1,7 +1,11 @@
 <template>
 	<div id="app">
-		<SideBar></SideBar>
-		<router-view/>
+		<router-view
+			v-slot="{Component}"
+		>
+			<component :is="Component"/>
+			<SideBar></SideBar>
+		</router-view>
 		<FooterComponent></FooterComponent>
 	</div>
 </template>

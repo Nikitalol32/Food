@@ -1,21 +1,40 @@
 <template>
-	<div class="menu">
+	<div
+		class="menu"
+		v-analytics="{
+			events: ['view'],
+			params: {
+				slug: 'menu'
+			}
+		}"
+	>
 		<div class="menu__header">
-			<img src="@/assets/img/basket.svg" class="menu__basket-icon">
+			<img
+				src="@/assets/img/basket.svg"
+				class="menu__basket-icon"
+				v-analytics="{
+					events: ['click'],
+					params: {
+						slug: 'navPay'
+					}
+				}"
+			>
 		</div>
 		<nav class="menu__nav">
 			<Segments
 				:doNeedARequestSegments="true"
-			@dishes="getDishes"
+				@dishes="getDishes"
+				@segmentId="getSegmentId"
 			/>
 		</nav>
-		<div class="menu__carts">
+		<div class="menu__carts" :key="segmentId">
 			<MenuCart
 				class="menu__cart"
-				v-for="dish in dishes"
+				v-for="dish, i in dishes"
 				:key="dish.id"
 				:dish="dish"
 				@dishClick="dishClick"
+				:position="i"
 			/>
 		</div>
 		<Contacts
@@ -33,7 +52,7 @@ export default {
 	data() {
 		return {
 			segments: [] as Segment[],
-			segmentId: '' as string,
+			segmentId: '' as string | undefined,
 			dishes: [] as Segment[],
 		}
 	},
@@ -51,6 +70,10 @@ export default {
 				name: 'dish-page',
 				params: {id: dishId}
 			})
+		},
+
+		getSegmentId(segmentId: string) {
+			this.segmentId = segmentId;
 		},
 
 		async getDishes(dishes: Segment[]) {

@@ -4,14 +4,48 @@
 			class="nav-item"
 			to="/menu"
 			@click="menuClick"
+			v-analytics="{
+				events: ['click'],
+				params: {
+					slug: 'navMenu',
+				}
+			}"
 		>
 			Меню
 		</router-link>
-		<div class="nav-item" @click="closeSidebar()">Доставка</div>
-		<div class="nav-item" @click="closeSidebar()">Оплата</div>
+		<div
+			class="nav-item"
+			@click="closeSidebar()"
+			v-analytics="{
+				events: ['click'],
+				params: {
+					slug: 'navDelivery',
+				}
+			}"
+		>
+			Доставка
+		</div>
+		<div
+			class="nav-item"
+			@click="closeSidebar()"
+			v-analytics="{
+				events: ['click'],
+				params: {
+					slug: 'navPay',
+				}
+			}"
+		>
+			Оплата
+		</div>
 		<div
 			class="nav-item"
 			@click="showModal(true)"
+			v-analytics="{
+				events: ['click'],
+				params: {
+					slug: 'navReservation ',
+				}
+			}"
 		>
 			Бронь столика
 		</div>

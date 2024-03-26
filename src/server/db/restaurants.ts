@@ -5,7 +5,8 @@ export const restaurants = () => [
 		street: 'Лобачевского',
 		house: '37с1',
 		zip: '119361',
-		workTime: [10, 23],
+		number: '+7 (123) 456-78-90',
+		workTime: ['С 10:00 до 23:00', 'С 10:00 до 03:00'],
 		coords: [55.687731, 37.474580]
 	},
 
@@ -15,7 +16,8 @@ export const restaurants = () => [
 		street: 'Ярославское шоссе',
 		house: '54',
 		zip: '129337',
-		workTime: [10, 23],
+		number: '+7 (123) 456-78-90',
+		workTime: ['С 10:00 до 23:00', 'С 10:00 до 03:00'],
 		coords: [55.865985, 37.704942]
 	},
 
@@ -25,7 +27,8 @@ export const restaurants = () => [
 		street: 'набережная Обводного канал',
 		house: '120',
 		zip: '198095',
-		workTime: [10, 23],
+		number: '+7 (123) 456-78-90',
+		workTime: ['С 10:00 до 23:00', 'С 10:00 до 03:00'],
 		coords: [59.906932, 30.298692]
 	}
 ]

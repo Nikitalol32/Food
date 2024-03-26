@@ -24,7 +24,15 @@
 				</div>
 			</section>
 
-			<section class="home__menu">
+			<section
+				class="home__menu"
+				v-analytics="{
+					events: ['view'],
+					params: {
+						slug: 'menu'
+					},
+				}"
+			>
 				<div class="chapter-container">
 					<div class="chapter-name">Меню</div>
 					<div class="stripe"></div>
@@ -43,7 +51,17 @@
 								<img class="menu-carts__item-photo" src="@/assets/img/Main menu.png" alt="Menu">
 							</div>
 							<div class="chapter-container">
-								<div class="chapter-name">Главное меню</div>
+								<div
+									class="chapter-name"
+									v-analytics="{
+										events: ['click'],
+										params: {
+											slug: 'menuBlockMainMenu'
+										},
+									}"
+								>
+									Главное меню
+								</div>
 								<div class="stripe"></div>
 							</div>
 						</div>
@@ -52,7 +70,17 @@
 								<img class="menu-carts__item-photo" src="@/assets/img/Bar Card.png" alt="Menu">
 							</div>
 							<div class="chapter-container">
-								<div class="chapter-name">Барная карта</div>
+								<div
+									class="chapter-name"
+									v-analytics="{
+										events: ['click'],
+										params: {
+											slug: 'menuBlockDrinks'
+										},
+									}"
+								>
+									Барная карта
+								</div>
 								<div class="stripe"></div>
 							</div>
 						</div>
@@ -71,8 +99,28 @@
 						<div class="home__delivery-text">Phasellus diam, ultrices lobortis integer et. Diam, purus vel sagittis, non, a. In risus, venenatis enim vitae mauris aliquet orci. Consectetur nibh interdum nullam ut lobortis eu etiam sem. Et in vitae pellentesque non, lectus orci natoque faucibus suspendisse. Semper aliquam id et ultrices velit donec lacus. In odio sit nibh volutpat cras placerat sit feugiat dignissim. Rutrum et suspendisse tortor, lobortis eleifend in fringilla. Egestas cursus imperdiet cursus dui, nulla id massa. Hendrerit nam enim semper porttitor imperdiet diam semper. Nulla sit etiam cras morbi enim elementum euismod sapien.
 						</div>
 						<div class="home__delivery-buttons">
-							<button class="home__delivery-button">Подробнее</button>
-							<button class="home__delivery-button">Условия Доставки</button>
+							<button
+								class="home__delivery-button"
+								v-analytics="{
+									events: ['click'],
+									params: {
+										slug: 'deliberyInfo'
+									}
+								}"
+							>
+								Подробнее
+							</button>
+							<button
+								class="home__delivery-button"
+								v-analytics="{
+									events: ['click'],
+									params: {
+										slug: 'deliberyInfo'
+									}
+								}"
+							>
+								Условия Доставки
+							</button>
 						</div>
 					</div>
 				</div>
@@ -108,7 +156,6 @@ export default {
 			this.bgNavIsActive = false;
 		}
 
-		window.scrollTo(0, 0);
 	}
 
 }

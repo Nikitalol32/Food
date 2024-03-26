@@ -7,6 +7,12 @@
 			class="segment"
 			:class="{'segment-focus': item.id === this.segmentId}"
 			ref="segment"
+			v-analytics="{
+				events: ['click'],
+				params: {
+					segmentId: item.id
+				}
+			}"
 		>
 		{{item.title}}
 		</li>
@@ -45,6 +51,8 @@ export default {
 				path: '/menu',
 				query: {segment: segment}
 			});
+			
+			this.$emit('segmentId', this.segmentId);
 		}
 	},
 
@@ -54,7 +62,7 @@ export default {
 				{routeSegment} = this;
 
 			if (typeof routeSegment === "string") {
-				this.$emit('dishes', await getSegment(routeSegment))
+				this.$emit('dishes', await getSegment(routeSegment));
 				this.segmentId = routeSegment;
 			}
 

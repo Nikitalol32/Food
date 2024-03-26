@@ -1,5 +1,18 @@
 <template>
-	<div class="menu-cart" @click="dishClick(dish.id, $event)">
+	<div
+		class="menu-cart"
+		@click="dishClick(dish.id, $event)"
+		:key="segmentId"
+		v-analytics="{
+			events: ['click', 'view'],
+			params: {
+				dishId: dish.id,
+				segmentId: segmentId,
+				position: position,
+			},
+			once: true
+		}"
+	>
 		<img
 			:src="dish.img"
 			:alt="dish.name"
@@ -12,25 +25,49 @@
 					{{dish.price}}
 					<img class="ruble-icon" src="@/assets/img/ruble-icon.svg" alt="">
 				</div>
-				<div class="menu-cart__button" ref="button">В корзину</div>
+				<div
+					class="menu-cart__button"
+					ref="button"
+					v-analytics="{
+						events: ['click'],
+						params: {
+							dishId: dish.id,
+							segmentId: segmentId,
+							position: position,
+						},
+					}"
+				>
+					В корзину
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
+
 export default {
+	data() {
+		return {
+			segmentId: '' as any,
+		}
+	},
+
 	props: {
 		dish: Object,
+		position: Number,
 	},
 
 	methods: {
 		dishClick(id: string, e: PointerEvent) {
-
 			if (e.target !== this.$refs.button) {
 				this.$emit('dishClick', id);
 			}
 		}
+	},
+
+	created() {
+		this.segmentId = this.$route.query['segment']?.toString();
 	}
 }
 </script>
